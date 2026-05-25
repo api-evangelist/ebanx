@@ -1,0 +1,78 @@
+extends:
+  - [spectral:oas, all]
+rules:
+  ebanx-info-contact:
+    description: EBANX specs must include a contact block.
+    given: $.info
+    severity: error
+    then:
+      field: contact
+      function: truthy
+
+  ebanx-info-version:
+    description: EBANX specs must declare an info.version.
+    given: $.info
+    severity: error
+    then:
+      field: version
+      function: truthy
+
+  ebanx-server-defined:
+    description: Every EBANX OpenAPI spec must declare both sandbox and production servers.
+    given: $.servers
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 2
+
+  ebanx-only-post:
+    description: EBANX REST operations are exposed as POST endpoints under /ws/* — flag non-POST methods.
+    given: $.paths[*][?(@property != 'post')]
+    severity: warn
+    then:
+      function: falsy
+
+  ebanx-operation-summary-title-case:
+    description: Operation summaries must use Title Case.
+    given: $.paths[*][*].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*( [A-Z][A-Za-z0-9]*)*$'
+
+  ebanx-operation-id-camel-case:
+    description: operationId must be camelCase.
+    given: $.paths[*][*].operationId
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  ebanx-operation-description:
+    description: Every operation must include a description.
+    given: $.paths[*][*]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  ebanx-security-integration-key:
+    description: Every spec must declare the integrationKey security scheme.
+    given: $.components.securitySchemes.integrationKey
+    severity: error
+    then:
+      function: truthy
+
+  ebanx-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    given: $.paths
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[^/].*[^/]$|^/.*[^/]$|^/$'

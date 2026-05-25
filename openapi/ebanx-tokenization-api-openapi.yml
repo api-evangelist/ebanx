@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: EBANX Tokenization API
+  version: '1.0'
+  description: >-
+    Tokenize card data on EBANX so card numbers never touch merchant servers.
+    Tokens can be reused for repeat charges, subscriptions, and one-click
+    checkout flows and refreshed with new CVVs as needed.
+  contact:
+    name: EBANX Sales Engineering
+    email: sales.engineering@ebanx.com
+    url: https://docs.ebanx.com
+servers:
+  - url: https://api.ebanxpay.com
+    description: Production environment
+  - url: https://sandbox.ebanxpay.com
+    description: Sandbox environment for testing
+security:
+  - integrationKey: []
+paths:
+  /ws/token:
+    post:
+      summary: Create Card Token
+      operationId: createCardToken
+      description: Create a reusable token for a credit or debit card.
+      tags: [Tokenization]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [integration_key, payment_type_code, creditcard, country]
+              properties:
+                integration_key: { type: string }
+                payment_type_code: { type: string, description: 'Card brand: visa, mastercard, amex, hipercard, elo, etc.' }
+                country: { type: string }
+                creditcard:
+                  type: object
+                  required: [card_number, card_name, card_due_date, card_cvv]
+                  properties:
+                    card_number: { type: string }
+                    card_name: { type: string }
+                    card_due_date: { type: string, description: 'MM/YYYY' }
+                    card_cvv: { type: string }
+      responses:
+        '200':
+          description: Token created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  token: { type: string }
+                  masked_card_number: { type: string }
+                  payment_type_code: { type: string }
+  /ws/token/setCVV:
+    post:
+      summary: Set Token CVV
+      operationId: setTokenCVV
+      description: Attach a fresh CVV to an existing card token, typically before reusing it for a high-risk transaction.
+      tags: [Tokenization]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [integration_key, token, cvv]
+              properties:
+                integration_key: { type: string }
+                token: { type: string }
+                cvv: { type: string }
+      responses:
+        '200':
+          description: CVV bound to token
+components:
+  securitySchemes:
+    integrationKey:
+      type: apiKey
+      in: header
+      name: x-ebanx-integration-key

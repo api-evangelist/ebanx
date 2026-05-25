@@ -1,0 +1,306 @@
+aid: ebanx
+url: https://raw.githubusercontent.com/api-evangelist/ebanx/refs/heads/main/apis.yml
+name: EBANX
+tags:
+- Payments
+- Pay-in
+- Payouts
+- Foreign Exchange
+- Tokenization
+- LATAM
+- Emerging Markets
+- Pix
+- Boleto
+- OXXO
+- SPEI
+- PSE
+- Cross-Border
+- Webhooks
+description: >-
+  EBANX is a Brazil-founded payments processor specializing in pay-in, payout,
+  and cross-border payments for Latin America and other emerging markets. The
+  EBANX API ecosystem covers Pay-in (Direct API, Payment Page, Payment Link,
+  Drop-in), Payouts (local and cross-border), Foreign Exchange, Card
+  Tokenization, and signed Payment Notifications across 19+ countries
+  including Brazil, Mexico, Colombia, Chile, Argentina, Peru, Ecuador,
+  Bolivia, Uruguay, Paraguay, Costa Rica, Guatemala, Panama, Dominican
+  Republic, India, the Philippines, Kenya, Nigeria, South Africa, and Egypt.
+  EBANX is best known for connecting global merchants to local payment methods
+  like Pix, Pix Automatico, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo,
+  Nequi, Mercado Pago, NuPay, PicPay, and dozens of others, plus an expanding
+  recurring-payments product on top of alternative payment methods.
+image: https://www.ebanx.com/static/images/ebanx-symbol-yellow.svg
+created: '2026-05-24'
+modified: '2026-05-24'
+position: Consuming
+specificationVersion: '0.18'
+humanURL: https://www.ebanx.com
+baseURL: https://api.ebanxpay.com
+apis:
+- aid: ebanx:ebanx-pay-in-direct-api
+  name: EBANX Pay-in Direct API
+  tags:
+  - Payments
+  - Pay-in
+  - Direct API
+  - Pix
+  - Boleto
+  - OXXO
+  - SPEI
+  - PSE
+  - Cards
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/api/
+    type: APIReference
+  - url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/direct-api
+    type: Documentation
+  - url: https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
+    type: Documentation
+  - url: openapi/ebanx-pay-in-direct-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/ebanx-payment-schema.json
+    type: JSONSchema
+  - url: json-schema/ebanx-refund-schema.json
+    type: JSONSchema
+  - url: json-structure/ebanx-payment-structure.json
+    type: JSONStructure
+  - url: examples/ebanx-create-direct-payment-pix-example.json
+    type: Example
+  - url: examples/ebanx-create-direct-payment-card-example.json
+    type: Example
+  - type: NaftikoCapability
+    url: capabilities/pay-in-direct.yaml
+  description: >-
+    Direct integration that gives merchants full control of the checkout
+    experience. Accept cards (with optional 3DS and installments), Pix, Boleto,
+    OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets across
+    EBANX markets. Includes capture, query, cancel, refund, refundOrCancel,
+    installment-plan lookup, BIN lookup, available-banks lookup, available
+    e-wallets lookup, and customer bank-info resend.
+
+- aid: ebanx:ebanx-payment-page-api
+  name: EBANX Payment Page API
+  tags:
+  - Payments
+  - Pay-in
+  - Hosted Checkout
+  humanURL: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
+    type: Documentation
+  - url: openapi/ebanx-payment-page-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/payment-page.yaml
+  description: >-
+    Hosted EBANX checkout. The merchant submits payment parameters and EBANX
+    renders the full payment UI, validates the customer input, processes the
+    payment, and returns the customer to the merchant via a redirect URL.
+    Ideal for merchants who want to outsource PCI scope and per-market UI work.
+
+- aid: ebanx:ebanx-tokenization-api
+  name: EBANX Tokenization API
+  tags:
+  - Payments
+  - Tokenization
+  - Cards
+  - PCI
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/api/
+    type: APIReference
+  - url: openapi/ebanx-tokenization-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/ebanx-card-token-schema.json
+    type: JSONSchema
+  - type: NaftikoCapability
+    url: capabilities/card-tokenization.yaml
+  description: >-
+    Tokenize cards on EBANX so PAN never touches merchant servers, and refresh
+    CVVs on stored tokens before high-risk reuse. Reusable tokens power
+    one-click checkout, subscriptions, and stored-card flows.
+
+- aid: ebanx:ebanx-fx-api
+  name: EBANX FX API
+  tags:
+  - Foreign Exchange
+  - FX
+  - Cross-Border
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/api/
+    type: APIReference
+  - url: openapi/ebanx-fx-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/foreign-exchange.yaml
+  description: >-
+    Quote current FX rates between a merchant pricing currency (typically USD
+    or EUR) and EBANX market currencies, and mint a short-lived FX token to
+    lock a rate so a quoted price is honored when the underlying Direct
+    Payment is captured.
+
+- aid: ebanx:ebanx-payout-api
+  name: EBANX Payout API
+  tags:
+  - Payouts
+  - Disbursements
+  - Cross-Border
+  - LATAM
+  humanURL: https://docs.ebanx.com/docs/payout/payouts-overview
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/docs/payout/payouts-overview
+    type: Documentation
+  - url: https://docs.ebanx.com/api/
+    type: APIReference
+  - url: openapi/ebanx-payout-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/ebanx-payout-schema.json
+    type: JSONSchema
+  - url: json-structure/ebanx-payout-structure.json
+    type: JSONStructure
+  - url: examples/ebanx-create-payout-example.json
+    type: Example
+  - type: NaftikoCapability
+    url: capabilities/payouts.yaml
+  description: >-
+    Send money from a merchant funded balance to a payee bank account or
+    e-wallet in any EBANX market. Supports local payouts (merchant funds in
+    local currency) and cross-border payouts (merchant deposits USD and EBANX
+    converts to the payee currency). Includes create, commit, cancel,
+    retrieve, search, simulate, attach invoice, balance, bank list, bank
+    detail, payee creation, and bank-account verification.
+
+- aid: ebanx:ebanx-notifications
+  name: EBANX Payment Notifications
+  tags:
+  - Webhooks
+  - Notifications
+  - Events
+  humanURL: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
+  properties:
+  - url: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
+    type: Documentation
+  - url: asyncapi/ebanx-notifications-asyncapi.yml
+    type: AsyncAPI
+  - url: examples/ebanx-payment-notification-example.json
+    type: Example
+  - type: NaftikoCapability
+    url: capabilities/payment-notifications.yaml
+  description: >-
+    Signed HTTP POST callbacks delivered to a merchant-configured Notification
+    URL whenever a payment, refund, chargeback, or Pix MED return request
+    changes state. Each callback carries the EBANX hash so the merchant can
+    re-query the Direct API for authoritative payment state.
+
+properties:
+- url: https://www.ebanx.com
+  type: Portal
+- url: https://www.ebanx.com/en/
+  type: Marketing
+- url: https://business.ebanx.com
+  type: Portal
+- url: https://insights.ebanx.com
+  type: Content
+- url: https://docs.ebanx.com
+  type: Documentation
+- url: https://docs.ebanx.com/api/
+  type: APIReference
+- url: https://docs.ebanx.com/docs/get-started/api-ecosystem
+  type: GettingStarted
+- url: https://docs.ebanx.com/docs/pay-in/dev-tools/postman
+  type: Postman
+- url: https://docs.ebanx.com/docs/pay-in/features/ebanx-js
+  name: ebanx.js
+  type: SDK
+- url: https://github.com/ebanx
+  type: GitHubOrganization
+- url: https://github.com/ebanx/lib-js
+  name: ebanx lib-js (JavaScript / TypeScript)
+  type: SDK
+- url: https://github.com/ebanx/benjamin
+  name: benjamin (PHP business rules library)
+  type: SDK
+- url: https://github.com/ebanx/woocommerce-gateway-ebanx
+  name: EBANX WooCommerce Gateway
+  type: Plugin
+- url: https://github.com/ebanx/magento2-gateway-ebanx
+  name: EBANX Magento 2 Gateway
+  type: Plugin
+- url: https://github.com/ebanx/device-fingerprint
+  name: EBANX Device Fingerprint
+  type: SDK
+- url: https://github.com/ebanx/ebanx-pay-ruby-sdk
+  name: EBANX Pay Ruby SDK
+  type: SDK
+- url: https://www.linkedin.com/company/ebanx/
+  type: LinkedIn
+- url: https://twitter.com/EBANX
+  type: Twitter
+- url: https://www.ebanx.com/en/contact/#sales
+  type: Sales
+- url: https://www.ebanx.com/en/legal/merchants/terms-and-conditions-for-payment-processing-services/
+  type: TermsOfService
+- url: plans/ebanx-plans-pricing.yml
+  type: Plans
+- url: rate-limits/ebanx-rate-limits.yml
+  type: RateLimits
+- url: finops/ebanx-finops.yml
+  type: FinOps
+- url: vocabulary/ebanx-vocabulary.yml
+  type: Vocabulary
+- url: json-ld/ebanx-context.jsonld
+  type: JSONLD
+- url: rules/ebanx-rules.yml
+  type: SpectralRuleset
+
+- type: Features
+  data:
+  - Pay-in Direct API for full-control checkout across 100+ local payment methods
+  - Payment Page hosted checkout (PCI scope handled by EBANX)
+  - Payment Link no-code checkout via the EBANX dashboard
+  - Drop-in pre-built UI component for embedded payment selection
+  - Pix and Pix Automatico (recurring Pix) in Brazil
+  - Boleto Bancario in Brazil
+  - OXXO and SPEI in Mexico
+  - PSE and Nequi in Colombia
+  - Efecty, PagoEfectivo, Rapipago, PagoFacil in the Andean region
+  - Card payments (Visa, Mastercard, Amex, Hipercard, Elo, Diners) with 3DS
+  - Card installments (parcelamento) with installment-plan lookup
+  - Card tokenization with reusable tokens and per-charge CVV refresh
+  - Payouts to local bank accounts and e-wallets in 19+ markets
+  - Cross-border payouts where merchant funds in USD and EBANX converts to local currency
+  - Real-time payout balance and bank/account verification
+  - Mass payouts for payroll, marketplace seller payments, and gig disbursements
+  - Foreign exchange quotes and FX tokens for locked-rate payments
+  - Refund and chargeback APIs with MED Pix return-request handling
+  - Signed Payment Notifications webhook for payment, refund, chargeback, and MED Pix events
+  - Sandbox environment with test cards and simulated payment methods
+  - Postman collections and Insomnia exports for every API surface
+  - ebanx.js for in-browser card tokenization, 3DS, and device fingerprinting
+  - Open-source WooCommerce and Magento 2 gateway plugins
+  - Self-serve sub-product for Brazil SMB via Juno / EBANX Pay
+  - Geographic coverage: BR, MX, CO, CL, AR, PE, EC, BO, PY, UY, GT, CR, PA, DO, IN, PH, KE, NG, ZA, EG
+  sources:
+  - https://www.ebanx.com/en/
+  - https://docs.ebanx.com
+  - https://docs.ebanx.com/docs/get-started/api-ecosystem
+  - https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
+  - https://docs.ebanx.com/docs/payout/payouts-overview
+  - https://business.ebanx.com/en/press-room/press-releases/ebanx-acquires-b2b-fintech-juno-in-brazil
+  updated: '2026-05-24'
+
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+- name: EBANX Sales Engineering
+  email: sales.engineering@ebanx.com
+  url: https://www.ebanx.com

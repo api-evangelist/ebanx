@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2024-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ebanx/main/json-structure/ebanx-payment-structure.json",
+  "title": "EBANX Payment Structure",
+  "type": "object",
+  "properties": {
+    "hash": { "type": "string" },
+    "merchant_payment_code": { "type": "string" },
+    "status": { "type": "string" },
+    "country": { "type": "string" },
+    "payment_type_code": { "type": "string" },
+    "currency_code": { "type": "string" },
+    "amount_total": { "type": "number" },
+    "amount_ext": { "type": "number" },
+    "currency_ext": { "type": "string" },
+    "currency_rate": { "type": "number" },
+    "due_date": { "type": "string" },
+    "instalments": { "type": "string" },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "document": { "type": "string" }
+      }
+    }
+  }
+}

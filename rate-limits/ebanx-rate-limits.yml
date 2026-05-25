@@ -1,0 +1,36 @@
+apiCommons: '0.1'
+provider: ebanx
+name: EBANX Rate Limits
+description: >-
+  EBANX does not publish a public, numeric rate-limit schedule for its Pay-in,
+  Payout, FX, or Tokenization APIs. Limits are applied on a per-merchant basis
+  and adjusted based on the merchant's contracted volume, risk profile, and
+  historical TPS. Merchants should engineer for HTTP 429 responses, exponential
+  backoff, and EBANX-issued 503/504 timeouts during peak windows.
+sourceURLs:
+  - https://docs.ebanx.com
+defaults:
+  scope: per-merchant
+  enforcement: per integration_key
+  responseOnLimit:
+    httpStatus: 429
+    body: { status: ERROR, status_code: BP-DR-XX, status_message: 'Rate limit exceeded' }
+guidance:
+  - Throttle pay-in bursts and retry with exponential backoff plus jitter.
+  - Idempotency: re-send the same merchant_payment_code (pay-in) or external_uid (payout) to safely retry without creating duplicates.
+  - Cache /ws/instalmentsPlan, /ws/cardbin, and /ws/getBankList responses where possible — they change infrequently.
+  - Configure separate integration_key credentials for batch back-office work vs interactive checkout traffic to isolate noisy neighbors.
+  - Coordinate planned high-TPS launches (campaigns, payroll runs, mass payouts) with EBANX support in advance.
+limits:
+  - id: pay-in-tps
+    description: Sustained pay-in transactions per second on /ws/direct.
+    value: contract-specific
+  - id: payout-tps
+    description: Sustained payout creations per second on /ws/payout/create.
+    value: contract-specific
+  - id: query-tps
+    description: Sustained query/list throughput on /ws/query and /ws/payout/search.
+    value: contract-specific
+  - id: notification-delivery
+    description: EBANX expects a 200 within 10 seconds for payment notification callbacks; retries follow on non-2xx.
+    value: 10s response window

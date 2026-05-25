@@ -1,0 +1,187 @@
+name: EBANX Vocabulary
+description: >-
+  Operational and capability vocabulary for the EBANX payments platform,
+  covering pay-in (Direct API, Payment Page, Payment Link), payout, FX, card
+  tokenization, payment notifications, and Latin American local payment
+  methods and country-specific tax id requirements.
+version: '0.1'
+
+domains:
+  - id: pay-in
+    name: Pay-in
+    description: Accepting payments from customers across EBANX markets.
+    concepts:
+      - Payment
+      - DirectPayment
+      - PaymentPage
+      - PaymentLink
+      - DropIn
+      - Installment
+      - 3DS
+      - CardBin
+      - InstallmentsPlan
+      - Refund
+      - Chargeback
+      - MedPix
+      - PixAutomatico
+  - id: payout
+    name: Payout
+    description: Sending money to bank accounts and e-wallets in EBANX markets.
+    concepts:
+      - Payout
+      - LocalPayout
+      - CrossBorderPayout
+      - MassPayout
+      - Payee
+      - PayoutBalance
+      - PayoutSimulation
+      - AccountVerification
+  - id: fx
+    name: Foreign Exchange
+    description: Currency conversion between merchant pricing currency and local market currencies.
+    concepts:
+      - ExchangeRate
+      - FxToken
+      - CurrencyPair
+  - id: tokenization
+    name: Card Tokenization
+    description: Storing card data on EBANX and reusing tokens for repeat charges.
+    concepts:
+      - CardToken
+      - TokenCVV
+  - id: notifications
+    name: Payment Notifications
+    description: Webhooks delivered to merchant endpoints on payment state change.
+    concepts:
+      - PaymentNotification
+      - RefundNotification
+      - ChargebackNotification
+      - MedPixNotification
+
+paymentMethods:
+  cards:
+    - visa
+    - mastercard
+    - amex
+    - hipercard
+    - elo
+    - diners
+    - discover
+    - aura
+  bankTransfer:
+    - pix
+    - boleto
+    - spei
+    - pse
+    - safetypay
+    - sencillito
+    - servipag
+  cashVoucher:
+    - oxxo
+    - efecty
+    - baloto
+    - pagoefectivo
+    - rapipago
+    - pagofacil
+    - oxxo-pay
+    - paycash
+  eWallets:
+    - mercadopago
+    - picpay
+    - nupay
+    - nequi
+    - rappipay
+    - daviplata
+  recurring:
+    - pix-automatico
+    - nupay
+    - mercadopago
+
+countries:
+  - id: BR
+    name: Brazil
+    currency: BRL
+    taxIds: [CPF, CNPJ]
+  - id: MX
+    name: Mexico
+    currency: MXN
+    taxIds: [RFC, CURP]
+  - id: CO
+    name: Colombia
+    currency: COP
+    taxIds: [NIT, CC, CE]
+  - id: CL
+    name: Chile
+    currency: CLP
+    taxIds: [RUT]
+  - id: AR
+    name: Argentina
+    currency: ARS
+    taxIds: [DNI, CUIT]
+  - id: PE
+    name: Peru
+    currency: PEN
+    taxIds: [DNI, RUC]
+  - id: EC
+    name: Ecuador
+    currency: USD
+    taxIds: [RUC]
+  - id: BO
+    name: Bolivia
+    currency: BOB
+  - id: PY
+    name: Paraguay
+    currency: PYG
+  - id: UY
+    name: Uruguay
+    currency: UYU
+  - id: GT
+    name: Guatemala
+    currency: GTQ
+  - id: CR
+    name: Costa Rica
+    currency: CRC
+  - id: PA
+    name: Panama
+    currency: USD
+  - id: DO
+    name: Dominican Republic
+    currency: DOP
+  - id: IN
+    name: India
+    currency: INR
+  - id: PH
+    name: Philippines
+    currency: PHP
+  - id: KE
+    name: Kenya
+    currency: KES
+  - id: NG
+    name: Nigeria
+    currency: NGN
+  - id: ZA
+    name: South Africa
+    currency: ZAR
+  - id: EG
+    name: Egypt
+    currency: EGP
+
+statusCodes:
+  payment:
+    PE: Pending
+    CA: Cancelled
+    OP: Opened
+    CO: Confirmed (Paid)
+    PN: Paid Manually
+  refund:
+    RE: Requested
+    PE: Pending
+    CO: Confirmed
+    CA: Cancelled
+  payout:
+    - created
+    - committed
+    - processing
+    - settled
+    - failed
+    - cancelled

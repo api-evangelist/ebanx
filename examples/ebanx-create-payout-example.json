@@ -1,0 +1,42 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://sandbox.ebanxpay.com/ws/payout/create",
+    "body": {
+      "integration_key": "test_ik_xxxxxxxxxxxxxxxxxxxxxxxx",
+      "external_uid": "PAYOUT-3003",
+      "target": "bank_account",
+      "currency_target": "COP",
+      "amount_target": 250000,
+      "currency_source": "USD",
+      "payee": {
+        "name": "Andrea Restrepo",
+        "email": "andrea@example.com",
+        "document": "1020304050",
+        "document_type": "CC",
+        "country": "co",
+        "bank": {
+          "code": "1007",
+          "agency": "00000",
+          "account": "1234567890",
+          "account_type": "checking"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": "SUCCESS",
+    "payout": {
+      "payout_uid": "p_01HZX9R7QK8C2YBPNTHE9V2QGM",
+      "external_uid": "PAYOUT-3003",
+      "status": "created",
+      "amount_target": 250000,
+      "currency_target": "COP",
+      "amount_source": 60.50,
+      "currency_source": "USD",
+      "fx_rate": 4132.23,
+      "fee": 1.50,
+      "estimated_settlement": "2026-05-26T18:00:00Z"
+    }
+  }
+}

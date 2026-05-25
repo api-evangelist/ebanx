@@ -1,0 +1,38 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://sandbox.ebanxpay.com/ws/direct",
+    "body": {
+      "integration_key": "test_ik_xxxxxxxxxxxxxxxxxxxxxxxx",
+      "operation": "request",
+      "payment": {
+        "name": "Joao da Silva",
+        "email": "joao@example.com",
+        "document": "853.513.468-93",
+        "country": "br",
+        "payment_type_code": "pix",
+        "merchant_payment_code": "ORDER-1001",
+        "currency_code": "BRL",
+        "amount_total": 100.00
+      }
+    }
+  },
+  "response": {
+    "payment": {
+      "hash": "5d3a32sd29q2sd",
+      "merchant_payment_code": "ORDER-1001",
+      "status": "PE",
+      "country": "br",
+      "payment_type_code": "pix",
+      "amount_br": 100.00,
+      "currency_ext": "BRL",
+      "currency_rate": 1.0,
+      "pix": {
+        "qrcode": "00020126360014BR.GOV.BCB.PIX011112345678900...",
+        "qrcode_url": "https://sandbox.ebanxpay.com/print/qrcode/5d3a32sd29q2sd",
+        "expires_at": "2026-05-25T15:00:00Z"
+      }
+    },
+    "status": "SUCCESS"
+  }
+}

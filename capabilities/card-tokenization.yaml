@@ -1,0 +1,35 @@
+name: Card Tokenization
+description: >-
+  Tokenize a credit or debit card on EBANX so card data never touches merchant
+  servers. Tokens can be reused for repeat charges, subscriptions, and
+  one-click checkout flows.
+version: '1.0'
+provider: ebanx
+api: ebanx-tokenization-api
+operations:
+  - id: createCardToken
+    method: POST
+    path: /ws/token
+    summary: Create Card Token
+  - id: setTokenCVV
+    method: POST
+    path: /ws/token/setCVV
+    summary: Set Token CVV
+inputs:
+  - name: integration_key
+    secret: true
+    required: true
+  - name: card_number
+    secret: true
+    required: true
+  - name: card_due_date
+    required: true
+  - name: card_cvv
+    secret: true
+    required: true
+outputs:
+  - token
+  - masked_card_number
+governance:
+  pci: true
+  pii: true

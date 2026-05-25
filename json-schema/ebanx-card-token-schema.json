@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ebanx/main/json-schema/ebanx-card-token-schema.json",
+  "title": "EBANX Card Token",
+  "description": "A reusable token representing a tokenized credit or debit card stored on EBANX.",
+  "type": "object",
+  "required": ["token", "payment_type_code"],
+  "properties": {
+    "token": { "type": "string", "description": "Opaque token used in subsequent Direct Payment requests." },
+    "masked_card_number": { "type": "string" },
+    "payment_type_code": { "type": "string" },
+    "country": { "type": "string" },
+    "expires_at": { "type": "string", "format": "date" }
+  }
+}

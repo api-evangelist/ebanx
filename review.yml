@@ -1,0 +1,81 @@
+aid: ebanx
+name: EBANX
+reviewed: '2026-05-24'
+reviewer: Kin Lane
+tier: 1
+type: company
+summary: >-
+  EBANX is a tier-1 Latin American payments processor offering a full API
+  surface across pay-in (Direct API, Payment Page, Payment Link, Drop-in),
+  payouts (local and cross-border), foreign exchange, card tokenization, and
+  signed payment notifications. Strong country coverage across 19+ rising
+  markets, deep local payment-method catalog (Pix, Boleto, OXXO, SPEI, PSE,
+  Efecty, PagoEfectivo, Nequi, Mercado Pago, NuPay), and a JWS-secured
+  integration model. Active open-source presence including ebanx.js,
+  WooCommerce and Magento 2 gateway plugins, the benjamin PHP business-rules
+  library, lib-js, and the Juno SMB sub-product.
+
+strengths:
+  - Comprehensive REST API across pay-in, payout, FX, and tokenization
+  - Hosted Payment Page reduces merchant PCI scope
+  - Strong Latin American + emerging-markets coverage (19+ countries)
+  - Recurring alternative payments (Pix Automatico, NuPay, Mercado Pago, Nequi)
+  - Cross-border payouts where merchant funds USD and EBANX handles FX
+  - Signed payment notifications with retry semantics
+  - Sandbox environment with first-class test fixtures
+  - Postman / Insomnia collections published for every API
+  - Active open-source GitHub org with merchant plugins and SDKs
+  - Self-serve SMB onramp via Juno / EBANX Pay (Brazil)
+
+gaps:
+  - No publicly published OpenAPI / Swagger download (Redoc UI download button is intentionally hidden)
+  - No public, numeric rate-limit schedule; limits are per-merchant and contractual
+  - No public price list; pricing is quote-based per merchant
+  - Historical integration_key body-parameter pattern is non-idiomatic vs header-based auth
+  - Several historical SDKs in the GitHub org are archived or stale
+  - Limited official server-side SDKs for modern stacks (TypeScript / Python / Go)
+
+api_groups:
+  - ebanx-pay-in-direct-api
+  - ebanx-payment-page-api
+  - ebanx-tokenization-api
+  - ebanx-fx-api
+  - ebanx-payout-api
+  - ebanx-notifications
+
+properties_covered:
+  - APIReference
+  - Documentation
+  - Portal
+  - GettingStarted
+  - Postman
+  - SDK
+  - Plugin
+  - GitHubOrganization
+  - LinkedIn
+  - Twitter
+  - Sales
+  - TermsOfService
+  - Plans
+  - RateLimits
+  - FinOps
+  - Vocabulary
+  - JSONLD
+  - SpectralRuleset
+  - OpenAPI
+  - AsyncAPI
+  - JSONSchema
+  - JSONStructure
+  - Example
+  - NaftikoCapability
+
+sources:
+  - https://www.ebanx.com/en/
+  - https://docs.ebanx.com
+  - https://docs.ebanx.com/api/
+  - https://docs.ebanx.com/docs/get-started/api-ecosystem
+  - https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
+  - https://docs.ebanx.com/docs/payout/payouts-overview
+  - https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
+  - https://github.com/ebanx
+  - https://business.ebanx.com/en/press-room/press-releases/ebanx-acquires-b2b-fintech-juno-in-brazil

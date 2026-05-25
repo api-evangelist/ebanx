@@ -1,0 +1,100 @@
+asyncapi: '2.6.0'
+info:
+  title: EBANX Payment Notifications
+  version: '1.0'
+  description: >-
+    EBANX sends HTTP POST callbacks to a merchant-configured Notification URL
+    whenever a payment changes state — approved, pending, cancelled, refunded,
+    or chargeback. Each request includes a digital signature header so the
+    merchant can verify authenticity, and the payload identifies the affected
+    payment hash so the merchant can re-query the Direct API for full details.
+  contact:
+    name: EBANX Sales Engineering
+    email: sales.engineering@ebanx.com
+    url: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
+servers:
+  merchant:
+    url: '{merchantNotificationUrl}'
+    protocol: https
+    description: Webhook endpoint configured by the merchant in the EBANX dashboard under Integrations.
+    variables:
+      merchantNotificationUrl:
+        default: https://example.com/ebanx/notifications
+        description: HTTPS URL the merchant set as the Notification URL.
+channels:
+  payment.update:
+    description: Payment status changed (approved, pending, cancelled, expired).
+    subscribe:
+      operationId: receivePaymentUpdate
+      summary: Receive payment status update
+      message:
+        $ref: '#/components/messages/PaymentNotification'
+  payment.refund:
+    description: Refund created, approved, or rejected.
+    subscribe:
+      operationId: receiveRefundNotification
+      summary: Receive refund status update
+      message:
+        $ref: '#/components/messages/RefundNotification'
+  payment.chargeback:
+    description: Chargeback opened, won, or lost on a card payment.
+    subscribe:
+      operationId: receiveChargebackNotification
+      summary: Receive chargeback notification
+      message:
+        $ref: '#/components/messages/ChargebackNotification'
+  payment.med-pix:
+    description: Pix MED (Mecanismo Especial de Devolução) return request lifecycle event.
+    subscribe:
+      operationId: receiveMedPixNotification
+      summary: Receive Pix MED notification
+      message:
+        $ref: '#/components/messages/MedPixNotification'
+components:
+  messages:
+    PaymentNotification:
+      name: PaymentNotification
+      contentType: application/x-www-form-urlencoded
+      headers:
+        type: object
+        properties:
+          X-EBANX-Signature:
+            type: string
+            description: Digital signature used by the merchant to verify the message authenticity.
+      payload:
+        type: object
+        properties:
+          notification_type: { type: string, enum: [update, refund, chargeback] }
+          operation: { type: string, enum: [payment_status_change] }
+          hash: { type: string, description: 'EBANX payment hash.' }
+          merchant_payment_code: { type: string }
+    RefundNotification:
+      name: RefundNotification
+      payload:
+        type: object
+        properties:
+          notification_type: { type: string, enum: [refund] }
+          operation: { type: string }
+          hash: { type: string }
+          refund_id: { type: string }
+          status: { type: string }
+    ChargebackNotification:
+      name: ChargebackNotification
+      payload:
+        type: object
+        properties:
+          notification_type: { type: string, enum: [chargeback] }
+          operation: { type: string }
+          hash: { type: string }
+          reason_code: { type: string }
+          status: { type: string }
+    MedPixNotification:
+      name: MedPixNotification
+      payload:
+        type: object
+        properties:
+          notification_type: { type: string, enum: [med_pix] }
+          operation: { type: string }
+          hash: { type: string }
+          status: { type: string }
+          reason: { type: string }

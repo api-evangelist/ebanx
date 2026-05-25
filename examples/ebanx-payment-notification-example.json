@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://merchant.example.com/ebanx/notifications",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-EBANX-Signature": "v1=4e3b1f6a..."
+    },
+    "body": "notification_type=update&operation=payment_status_change&hash=5d3a32sd29q2sd&merchant_payment_code=ORDER-1001"
+  },
+  "response": {
+    "status": 200,
+    "body": "OK"
+  },
+  "notes": "Merchant must respond 200 within 10 seconds. After receiving the notification, query /ws/query with the hash to retrieve the authoritative payment state."
+}

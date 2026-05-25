@@ -1,0 +1,21 @@
+name: Payment Notifications
+description: >-
+  Receive EBANX webhook callbacks at a merchant-hosted Notification URL for
+  payment status changes, refund updates, chargeback events, and Pix MED
+  return requests. Each callback is signed so the merchant can verify
+  authenticity before re-querying the Direct API for full state.
+version: '1.0'
+provider: ebanx
+api: ebanx-notifications
+delivery: webhook
+events:
+  - payment.update
+  - payment.refund
+  - payment.chargeback
+  - payment.med-pix
+configuration:
+  url: Set in EBANX dashboard under Account Settings -> Integrations -> Notification URL
+  retry: EBANX retries on non-200 responses
+  signature_header: X-EBANX-Signature
+governance:
+  pii: true

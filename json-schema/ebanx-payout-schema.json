@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ebanx/main/json-schema/ebanx-payout-schema.json",
+  "title": "EBANX Payout",
+  "description": "A payout from a merchant funded balance to a payee bank account or e-wallet.",
+  "type": "object",
+  "required": ["external_uid", "amount_target", "currency_target", "payee"],
+  "properties": {
+    "payout_uid": { "type": "string", "description": "EBANX-issued unique identifier for the payout." },
+    "external_uid": { "type": "string", "description": "Merchant-provided unique identifier for the payout." },
+    "status": { "type": "string", "enum": ["created", "committed", "processing", "settled", "failed", "cancelled"] },
+    "target": { "type": "string", "enum": ["bank_account", "e_wallet"] },
+    "amount_source": { "type": "number" },
+    "currency_source": { "type": "string", "description": "Currency of the funding balance (e.g., USD, BRL)." },
+    "amount_target": { "type": "number" },
+    "currency_target": { "type": "string", "description": "Local currency credited to the payee." },
+    "fx_rate": { "type": "number" },
+    "fee": { "type": "number" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "estimated_settlement": { "type": "string", "format": "date-time" },
+    "payee": {
+      "type": "object",
+      "required": ["name", "document", "country"],
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "document": { "type": "string" },
+        "document_type": { "type": "string" },
+        "country": { "type": "string" },
+        "bank": {
+          "type": "object",
+          "properties": {
+            "code": { "type": "string" },
+            "agency": { "type": "string" },
+            "account": { "type": "string" },
+            "account_digit": { "type": "string" },
+            "account_type": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2024-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ebanx/main/json-structure/ebanx-payout-structure.json",
+  "title": "EBANX Payout Structure",
+  "type": "object",
+  "properties": {
+    "payout_uid": { "type": "string" },
+    "external_uid": { "type": "string" },
+    "status": { "type": "string" },
+    "target": { "type": "string" },
+    "amount_source": { "type": "number" },
+    "currency_source": { "type": "string" },
+    "amount_target": { "type": "number" },
+    "currency_target": { "type": "string" },
+    "fx_rate": { "type": "number" },
+    "fee": { "type": "number" },
+    "created_at": { "type": "string" },
+    "estimated_settlement": { "type": "string" },
+    "payee": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "document": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    }
+  }
+}

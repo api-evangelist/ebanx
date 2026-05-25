@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ebanx/main/json-schema/ebanx-payment-schema.json",
+  "title": "EBANX Payment",
+  "description": "A payment processed by EBANX through the Pay-in Direct API or Payment Page.",
+  "type": "object",
+  "required": ["hash", "merchant_payment_code", "country", "payment_type_code", "amount_total"],
+  "properties": {
+    "hash": { "type": "string", "description": "EBANX-issued unique identifier for the payment." },
+    "merchant_payment_code": { "type": "string", "description": "Merchant-provided unique identifier for the payment." },
+    "status": { "type": "string", "enum": ["PE", "CA", "OP", "CO", "PN"], "description": "EBANX status code: PE pending, CA cancelled, OP opened, CO confirmed (paid), PN paid manually." },
+    "country": { "type": "string", "description": "ISO 3166-1 alpha-2 country code." },
+    "payment_type_code": { "type": "string", "description": "Local payment method code (e.g., visa, mastercard, pix, boleto, oxxo, spei, pse, efecty)." },
+    "currency_code": { "type": "string", "description": "Local currency ISO 4217 code." },
+    "amount_total": { "type": "number", "description": "Total amount charged to the customer in the local currency." },
+    "amount_ext": { "type": "number", "description": "Amount in the merchant pricing currency." },
+    "currency_ext": { "type": "string", "description": "Merchant pricing currency ISO 4217 code." },
+    "currency_rate": { "type": "number", "description": "FX rate applied between currency_code and currency_ext." },
+    "due_date": { "type": "string", "format": "date" },
+    "instalments": { "type": "string", "description": "Number of installments selected for card payments." },
+    "transfer_status": { "type": "string" },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "document": { "type": "string", "description": "Local tax id (CPF, CNPJ, RFC, NIT, etc.)." }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://sandbox.ebanxpay.com/ws/direct",
+    "body": {
+      "integration_key": "test_ik_xxxxxxxxxxxxxxxxxxxxxxxx",
+      "operation": "request",
+      "payment": {
+        "name": "Maria Lopez",
+        "email": "maria@example.com",
+        "document": "GOMM800101HDFRRR04",
+        "country": "mx",
+        "payment_type_code": "visa",
+        "merchant_payment_code": "ORDER-2002",
+        "currency_code": "MXN",
+        "amount_total": 599.00,
+        "instalments": 3,
+        "creditcard": {
+          "card_number": "4111111111111111",
+          "card_name": "MARIA LOPEZ",
+          "card_due_date": "12/2030",
+          "card_cvv": "123"
+        }
+      }
+    }
+  },
+  "response": {
+    "payment": {
+      "hash": "abcdef123456",
+      "merchant_payment_code": "ORDER-2002",
+      "status": "CO",
+      "country": "mx",
+      "payment_type_code": "visa",
+      "amount_ext": 599.00,
+      "currency_ext": "MXN",
+      "instalments": "3",
+      "transaction_status": {
+        "code": "OK",
+        "description": "Sandbox - Test credit card, transaction captured"
+      }
+    },
+    "status": "SUCCESS"
+  }
+}

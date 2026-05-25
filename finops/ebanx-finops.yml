@@ -1,0 +1,75 @@
+apiCommons: '0.1'
+provider: ebanx
+name: EBANX FinOps Alignment
+description: >-
+  Map EBANX's commercial surface to the FinOps Framework / FOCUS data spec so
+  finance, treasury, and platform teams can model the cost of accepting LATAM
+  payments and disbursing funds across emerging markets.
+sourceURLs:
+  - https://docs.ebanx.com
+  - https://business.ebanx.com/en/products
+  - https://www.ebanx.com/en/contact/#sales
+
+billingModel:
+  type: usage-and-fee-schedule
+  cadence: monthly settlement statement
+  currencies: [USD, BRL, MXN, COP, CLP, ARS, PEN, and other supported local currencies]
+  contractType: custom merchant agreement (self-serve sub-plan via Juno / EBANX Pay for SMB Brazil)
+
+focusMapping:
+  - focusColumn: ServiceCategory
+    value: Payments
+  - focusColumn: ServiceName
+    value: EBANX
+  - focusColumn: SubAccountId
+    value: EBANX merchant ID
+  - focusColumn: ResourceId
+    value: Payment hash / Payout payout_uid
+  - focusColumn: ChargeCategory
+    value: Usage / Fee
+  - focusColumn: BillingCurrency
+    value: Settlement currency per market
+  - focusColumn: PricingUnit
+    value: percent of transaction volume + fixed fee per transaction
+
+costDimensions:
+  - id: pay-in-mdr
+    description: Per-transaction percentage charged on accepted volume per country and payment method.
+    drivers: [country, payment_method, volume_tier, card_brand, card_present_or_not]
+  - id: pay-in-fixed
+    description: Per-transaction fixed fee per accepted payment.
+    drivers: [country, payment_method]
+  - id: payout-fee
+    description: Per-payout fee per destination country and destination type (bank vs e-wallet, local vs cross-border).
+    drivers: [destination_country, destination_type, source_currency]
+  - id: fx-spread
+    description: Foreign-exchange spread applied on cross-border pay-in or payout conversions.
+    drivers: [currency_pair, volume_tier]
+  - id: chargeback-fee
+    description: Per-chargeback fixed fee charged on disputed card transactions.
+    drivers: [country, reason_code]
+  - id: refund-fee
+    description: Per-refund fixed fee, where contractually applicable.
+    drivers: [payment_method]
+  - id: dispute-fee
+    description: Per-MED Pix dispute or chargeback dispute handling fee, where applicable.
+    drivers: [dispute_type]
+
+settlement:
+  cadence: Daily, weekly, or monthly per merchant contract
+  reportingFormats:
+    - Merchant dashboard
+    - CSV settlement reports
+    - Per-transaction reconciliation via /ws/query and Payment Notifications
+  receivables:
+    - amount_ext (local-currency volume)
+    - currency_rate (FX applied)
+    - net amount after fees
+
+practices:
+  - Reconcile every payment via hash and merchant_payment_code; never trust webhook payload as authoritative.
+  - Track per-country MDR and fixed fees as separate cost lines; aggregating into one blended rate hides per-method volatility.
+  - Separate FX spread from the underlying interchange / scheme cost when comparing EBANX to other LATAM PSPs.
+  - Forecast chargeback fees alongside ticket-disputed amounts; the fee is incremental.
+  - Reconcile payouts on external_uid and reflect FX rate, fee, and net amount at the merchant ledger.
+  - Use mass payouts / scheduled payouts in batches where fee tiers reward volume.

@@ -1,0 +1,74 @@
+apiCommons: '0.1'
+provider: ebanx
+name: EBANX Commercial Plans
+description: >-
+  EBANX uses a custom, quote-based commercial model negotiated per merchant.
+  Pricing typically blends MDR-style percentages by payment method and country
+  plus per-transaction fixed fees, with separate fee schedules for pay-in,
+  payout, FX, chargebacks, and disputes.
+sourceURLs:
+  - https://www.ebanx.com/en/contact/#sales
+  - https://docs.ebanx.com
+  - https://business.ebanx.com/en/products
+disclaimer: >-
+  EBANX does not publish a public price list. Rates depend on country, payment
+  method, volume, settlement currency, and merchant risk profile, and are
+  agreed in the merchant contract. The figures below reflect publicly
+  discussed orders of magnitude, not contractual rates.
+
+plans:
+  - id: custom-merchant
+    name: Custom Merchant
+    description: >-
+      The default commercial plan for direct EBANX merchants. All pricing is
+      negotiated as part of the onboarding contract.
+    target: Mid-market and enterprise merchants selling into LATAM and other emerging markets.
+    currency: USD
+    components:
+      - id: pay-in-mdr
+        type: variable
+        description: Merchant Discount Rate per pay-in transaction, varies by country and payment method (cards, Pix, Boleto, OXXO, etc.).
+        unit: percent_of_volume
+      - id: pay-in-fixed
+        type: fixed-per-transaction
+        description: Per-transaction fixed fee, varies by local payment method.
+      - id: payout-fee
+        type: variable
+        description: Per-payout fee, varies by destination country, method (bank vs e-wallet), and source currency (local vs USD cross-border).
+      - id: fx-spread
+        type: variable
+        description: FX spread applied to cross-border pay-ins and payouts.
+      - id: chargeback-fee
+        type: fixed-per-event
+        description: Per-chargeback fee in addition to the disputed transaction amount.
+      - id: refund-fee
+        type: fixed-per-event
+        description: Per-refund fee (may be waived depending on the contract).
+    onboarding:
+      - Submit merchant application via https://www.ebanx.com/en/contact/#sales
+      - KYC, KYB, AML, and risk review
+      - Commercial contract and pricing schedule
+      - Sandbox access and integration certification
+      - Production activation
+
+  - id: ebanx-pay-juno
+    name: EBANX Pay / Juno (Self-Serve, Brazil)
+    description: >-
+      Self-serve commercial plan available to small and medium Brazilian
+      merchants via the Juno-acquired Pay product. Public sign-up with
+      published per-transaction Brazilian rates rather than custom contracts.
+    target: Small and medium Brazilian merchants on EBANX Pay / Juno.
+    currency: BRL
+    components:
+      - id: card-mdr
+        type: variable
+        description: Per-transaction percentage on credit and debit card pay-ins.
+        unit: percent_of_volume
+      - id: boleto-fee
+        type: fixed-per-transaction
+        description: Per-Boleto fee (paid Boletos only).
+      - id: pix-fee
+        type: variable
+        description: Per-Pix fee or percentage, depending on volume tier.
+    notes:
+      - Self-serve sign-up via the Juno / EBANX Pay portal.
