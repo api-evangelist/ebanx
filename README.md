@@ -1,95 +1,189 @@
 # EBANX (ebanx)
 
-EBANX is a Brazil-founded payments processor specializing in pay-in, payout, and cross-border payments for Latin America and other emerging markets. The EBANX API ecosystem covers pay-in (Direct API, Payment Page, Payment Link, Drop-in), payouts (local and cross-border), foreign exchange, card tokenization, and signed payment notifications across 19+ countries. EBANX is best known for connecting global merchants to local payment methods like Pix, Pix Automatico, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, Nequi, Mercado Pago, NuPay, and PicPay.
+EBANX is a Brazil-founded payments processor specializing in pay-in, payout, and cross-border payments for Latin America and other emerging markets. The EBANX API ecosystem covers Pay-in (Direct API, Payment Page, Payment Link, Drop-in), Payouts (local and cross-border), Foreign Exchange, Card Tokenization, and signed Payment Notifications across 19+ countries including Brazil, Mexico, Colombia, Chile, Argentina, Peru, Ecuador, Bolivia, Uruguay, Paraguay, Costa Rica, Guatemala, Panama, Dominican Republic, India, the Philippines, Kenya, Nigeria, South Africa, and Egypt. EBANX is best known for connecting global merchants to local payment methods like Pix, Pix Automatico, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, Nequi, Mercado Pago, NuPay, PicPay, and dozens of others, plus an expanding recurring-payments product on top of alternative payment methods.
 
-**URL:** [Visit APIs.json](https://raw.githubusercontent.com/api-evangelist/ebanx/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ebanx/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ebanx/refs/heads/main/apis.yml)
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Scope
+
+- **Position:** Consuming
 
 ## Tags
 
- - Payments, Pay-in, Payouts, Foreign Exchange, Tokenization, LATAM, Emerging Markets, Pix, Boleto, OXXO, SPEI, PSE, Cross-Border, Webhooks
+- Payments
+- Pay-in
+- Payouts
+- Foreign Exchange
+- Tokenization
+- LATAM
+- Emerging Markets
+- Pix
+- Boleto
+- OXXO
+- SPEI
+- PSE
+- Cross-Border
+- Webhooks
+
+## Timestamps
+
+- **Created:** 2026-05-24
+- **Modified:** 2026-05-24
 
 ## APIs
 
 ### EBANX Pay-in Direct API
 
-Direct integration that gives merchants full control of the checkout experience across cards (with 3DS and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets.
+Direct integration that gives merchants full control of the checkout experience. Accept cards (with optional 3DS and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets across EBANX markets. Includes capture, query, cancel, refund, refundOrCancel, installment-plan lookup, BIN lookup, available-banks lookup, available e-wallets lookup, and customer bank-info resend.
 
-- **Human URL:** https://docs.ebanx.com/api/
-- **Base URL:** https://api.ebanxpay.com
-- **OpenAPI:** [openapi/ebanx-pay-in-direct-api-openapi.yml](openapi/ebanx-pay-in-direct-api-openapi.yml)
-- **Capability:** [capabilities/pay-in-direct.yaml](capabilities/pay-in-direct.yaml)
+- **Human URL:** [https://docs.ebanx.com/api/](https://docs.ebanx.com/api/)
+- **Base URL:** `https://api.ebanxpay.com`
+
+#### Tags
+
+- Payments
+- Pay-in
+- Direct API
+- Pix
+- Boleto
+- OXXO
+- SPEI
+- PSE
+- Cards
+
+#### Properties
+
+- [API Reference](https://docs.ebanx.com/api/)
+- [Documentation](https://docs.ebanx.com/docs/pay-in/solution/integration-methods/direct-api)
+- [Documentation](https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide)
+- [OpenAPI](openapi/ebanx-pay-in-direct-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/ebanx-pay-in-direct-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-pay-in-direct-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/ebanx-payment-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/ebanx-refund-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/ebanx-payment-structure.json)
+- [Example](examples/ebanx-create-direct-payment-pix-example.json)
+- [Example](examples/ebanx-create-direct-payment-card-example.json)
 
 ### EBANX Payment Page API
 
-Hosted EBANX checkout where the merchant posts payment parameters and EBANX handles UI, validation, and processing, then returns the customer via a redirect URL.
+Hosted EBANX checkout. The merchant submits payment parameters and EBANX renders the full payment UI, validates the customer input, processes the payment, and returns the customer to the merchant via a redirect URL. Ideal for merchants who want to outsource PCI scope and per-market UI work.
 
-- **Human URL:** https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
-- **Base URL:** https://api.ebanxpay.com
-- **OpenAPI:** [openapi/ebanx-payment-page-api-openapi.yml](openapi/ebanx-payment-page-api-openapi.yml)
-- **Capability:** [capabilities/payment-page.yaml](capabilities/payment-page.yaml)
+- **Human URL:** [https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page](https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page)
+- **Base URL:** `https://api.ebanxpay.com`
+
+#### Tags
+
+- Payments
+- Pay-in
+- Hosted Checkout
+
+#### Properties
+
+- [Documentation](https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page)
+- [OpenAPI](openapi/ebanx-payment-page-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/ebanx-payment-page-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-payment-page-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### EBANX Tokenization API
 
-Tokenize cards on EBANX so PAN never touches merchant servers, and refresh CVVs on stored tokens before reusing them for high-risk charges.
+Tokenize cards on EBANX so PAN never touches merchant servers, and refresh CVVs on stored tokens before high-risk reuse. Reusable tokens power one-click checkout, subscriptions, and stored-card flows.
 
-- **Human URL:** https://docs.ebanx.com/api/
-- **OpenAPI:** [openapi/ebanx-tokenization-api-openapi.yml](openapi/ebanx-tokenization-api-openapi.yml)
-- **Capability:** [capabilities/card-tokenization.yaml](capabilities/card-tokenization.yaml)
+- **Human URL:** [https://docs.ebanx.com/api/](https://docs.ebanx.com/api/)
+- **Base URL:** `https://api.ebanxpay.com`
+
+#### Tags
+
+- Payments
+- Tokenization
+- Cards
+- PCI
+
+#### Properties
+
+- [API Reference](https://docs.ebanx.com/api/)
+- [OpenAPI](openapi/ebanx-tokenization-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/ebanx-tokenization-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-tokenization-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/ebanx-card-token-schema.json) — [JSON Schema](https://json-schema.org/specification)
 
 ### EBANX FX API
 
-Quote FX rates between merchant pricing currency (USD/EUR) and EBANX market currencies, and mint a short-lived FX token to lock a rate for a future Direct Payment.
+Quote current FX rates between a merchant pricing currency (typically USD or EUR) and EBANX market currencies, and mint a short-lived FX token to lock a rate so a quoted price is honored when the underlying Direct Payment is captured.
 
-- **Human URL:** https://docs.ebanx.com/api/
-- **OpenAPI:** [openapi/ebanx-fx-api-openapi.yml](openapi/ebanx-fx-api-openapi.yml)
-- **Capability:** [capabilities/foreign-exchange.yaml](capabilities/foreign-exchange.yaml)
+- **Human URL:** [https://docs.ebanx.com/api/](https://docs.ebanx.com/api/)
+- **Base URL:** `https://api.ebanxpay.com`
+
+#### Tags
+
+- Foreign Exchange
+- FX
+- Cross-Border
+
+#### Properties
+
+- [API Reference](https://docs.ebanx.com/api/)
+- [OpenAPI](openapi/ebanx-fx-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/ebanx-fx-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-fx-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### EBANX Payout API
 
-Disburse from a merchant funded balance to bank accounts and e-wallets across EBANX markets. Supports local (merchant pre-funds in local currency) and cross-border (merchant funds in USD, EBANX converts) flows.
+Send money from a merchant funded balance to a payee bank account or e-wallet in any EBANX market. Supports local payouts (merchant funds in local currency) and cross-border payouts (merchant deposits USD and EBANX converts to the payee currency). Includes create, commit, cancel, retrieve, search, simulate, attach invoice, balance, bank list, bank detail, payee creation, and bank-account verification.
 
-- **Human URL:** https://docs.ebanx.com/docs/payout/payouts-overview
-- **Base URL:** https://api.ebanxpay.com
-- **OpenAPI:** [openapi/ebanx-payout-api-openapi.yml](openapi/ebanx-payout-api-openapi.yml)
-- **Capability:** [capabilities/payouts.yaml](capabilities/payouts.yaml)
+- **Human URL:** [https://docs.ebanx.com/docs/payout/payouts-overview](https://docs.ebanx.com/docs/payout/payouts-overview)
+- **Base URL:** `https://api.ebanxpay.com`
+
+#### Tags
+
+- Payouts
+- Disbursements
+- Cross-Border
+- LATAM
+
+#### Properties
+
+- [Documentation](https://docs.ebanx.com/docs/payout/payouts-overview)
+- [API Reference](https://docs.ebanx.com/api/)
+- [OpenAPI](openapi/ebanx-payout-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/ebanx-payout-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-payout-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/ebanx-payout-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/ebanx-payout-structure.json)
+- [Example](examples/ebanx-create-payout-example.json)
 
 ### EBANX Payment Notifications
 
-Signed HTTP POST callbacks delivered to a merchant-configured Notification URL for payment, refund, chargeback, and Pix MED return-request events.
+Signed HTTP POST callbacks delivered to a merchant-configured Notification URL whenever a payment, refund, chargeback, or Pix MED return request changes state. Each callback carries the EBANX hash so the merchant can re-query the Direct API for authoritative payment state.
 
-- **Human URL:** https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
-- **AsyncAPI:** [asyncapi/ebanx-notifications-asyncapi.yml](asyncapi/ebanx-notifications-asyncapi.yml)
-- **Capability:** [capabilities/payment-notifications.yaml](capabilities/payment-notifications.yaml)
+- **Human URL:** [https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/](https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/)
 
-## Artifacts
+#### Tags
 
-| Artifact | Path |
-|---|---|
-| Plans & Pricing | [plans/ebanx-plans-pricing.yml](plans/ebanx-plans-pricing.yml) |
-| Rate Limits | [rate-limits/ebanx-rate-limits.yml](rate-limits/ebanx-rate-limits.yml) |
-| FinOps Alignment | [finops/ebanx-finops.yml](finops/ebanx-finops.yml) |
-| Vocabulary | [vocabulary/ebanx-vocabulary.yml](vocabulary/ebanx-vocabulary.yml) |
-| JSON-LD Context | [json-ld/ebanx-context.jsonld](json-ld/ebanx-context.jsonld) |
-| Spectral Ruleset | [rules/ebanx-rules.yml](rules/ebanx-rules.yml) |
+- Webhooks
+- Notifications
+- Events
 
-## Geographic Coverage
+#### Properties
 
-Brazil, Mexico, Colombia, Chile, Argentina, Peru, Ecuador, Bolivia, Paraguay, Uruguay, Guatemala, Costa Rica, Panama, Dominican Republic, India, the Philippines, Kenya, Nigeria, South Africa, Egypt.
-
-## Authentication
-
-EBANX APIs authenticate with an **integration key** that is distinct for sandbox and production. The integration key is historically passed as `integration_key` in the JSON request body and is also accepted via the `x-ebanx-integration-key` header. EBANX additionally supports **JWS Authentication** for enhanced request integrity.
-
-## Environments
-
-| Environment | Base URL |
-|---|---|
-| Production | https://api.ebanxpay.com |
-| Sandbox | https://sandbox.ebanxpay.com |
+- [Documentation](https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/)
+- [AsyncAPI](asyncapi/ebanx-notifications-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Example](examples/ebanx-payment-notification-example.json)
+- [Postman Collection](collections/ebanx-fx-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-fx-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/ebanx-pay-in-direct-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-pay-in-direct-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/ebanx-payment-page-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-payment-page-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/ebanx-payout-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-payout-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/ebanx-tokenization-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ebanx-tokenization-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Maintainers
 
-- Kin Lane — info@apievangelist.com — https://apievangelist.com
-- EBANX Sales Engineering — sales.engineering@ebanx.com — https://www.ebanx.com
+**FN:** Kin Lane
+**Email:** info@apievangelist.com
+**URL:** https://apievangelist.com
+**Email:** sales.engineering@ebanx.com
+**URL:** https://www.ebanx.com
