@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EBANX Payout API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-ebanx-integration-key",
+      "value": "{{x-ebanx-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payout to a payee bank account or e-wallet. The payout starts in a draft state and must be committed."
+        },
+        {
+          "info": {
+            "name": "Commit Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/commit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm and release a previously created payout for settlement."
+        },
+        {
+          "info": {
+            "name": "Cancel Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a payout that has not yet been committed or settled."
+        },
+        {
+          "info": {
+            "name": "Retrieve Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/retrieve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the current status and settlement details of a payout."
+        },
+        {
+          "info": {
+            "name": "Search Payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search payouts by date range, status, or payee."
+        },
+        {
+          "info": {
+            "name": "Simulate Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/simulate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Calculate the fees, FX rate, and final payee amount that would apply to a hypothetical payout."
+        },
+        {
+          "info": {
+            "name": "Attach Invoice To Payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/attach",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "integration_key",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "external_uid",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Attach a tax invoice or supporting document to a payout."
+        },
+        {
+          "info": {
+            "name": "Get Payout Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/balance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return the current funded balance available for payouts in each supported currency."
+        },
+        {
+          "info": {
+            "name": "List Payout Banks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/banks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List banks supported as payout destinations for a given country."
+        },
+        {
+          "info": {
+            "name": "Get Payout Bank Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/bankDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return the field requirements for a destination bank in a given country."
+        },
+        {
+          "info": {
+            "name": "Verify Payee Bank Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payout/verify_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a payee bank account exists and that the account holder name matches before sending funds."
+        },
+        {
+          "info": {
+            "name": "Create Payee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/payee/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a reusable payee (beneficiary) record for repeat payouts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

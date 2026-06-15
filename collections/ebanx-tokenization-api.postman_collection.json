@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "4eea78f0-ccc8-483b-901d-b8e5773bd56a",
+      "name": "Tokenization",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fc51d3f-076b-4d2a-862c-e266df5c0692",
+          "name": "Create Card Token",
+          "request": {
+            "name": "Create Card Token",
+            "description": {
+              "content": "Create a reusable token for a credit or debit card.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"payment_type_code\": \"<string>\",\n  \"creditcard\": {\n    \"card_number\": \"<string>\",\n    \"card_name\": \"<string>\",\n    \"card_due_date\": \"<string>\",\n    \"card_cvv\": \"<string>\"\n  },\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de9ec2ed-5e6e-4741-8924-82ae8defd7ee",
+              "name": "Token created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"payment_type_code\": \"<string>\",\n  \"creditcard\": {\n    \"card_number\": \"<string>\",\n    \"card_name\": \"<string>\",\n    \"card_due_date\": \"<string>\",\n    \"card_cvv\": \"<string>\"\n  },\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"token\": \"string\",\n  \"masked_card_number\": \"string\",\n  \"payment_type_code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ccd0d0b-3de1-4672-9bbb-f63acc9849b3",
+          "name": "Set Token CVV",
+          "request": {
+            "name": "Set Token CVV",
+            "description": {
+              "content": "Attach a fresh CVV to an existing card token, typically before reusing it for a high-risk transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "token",
+                "setCVV"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"token\": \"<string>\",\n  \"cvv\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3dcccd8e-4140-4ca2-933a-02aa27741a2b",
+              "name": "CVV bound to token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "token",
+                    "setCVV"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"token\": \"<string>\",\n  \"cvv\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ebanxpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-ebanx-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1a51518e-4346-4e6c-aecc-12ad95344a95",
+    "name": "EBANX Tokenization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Tokenize card data on EBANX so card numbers never touch merchant servers. Tokens can be reused for repeat charges, subscriptions, and one-click checkout flows and refreshed with new CVVs as needed.\n\nContact Support:\n Name: EBANX Sales Engineering\n Email: sales.engineering@ebanx.com",
+      "type": "text/plain"
+    }
+  }
+}

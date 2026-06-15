@@ -1,0 +1,150 @@
+{
+  "item": [
+    {
+      "id": "4de36c10-7144-4a35-a210-2defea212e37",
+      "name": "PaymentPage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dcefdf07-d9ec-4801-93e0-ead18d80aed5",
+          "name": "Create Payment Page Request",
+          "request": {
+            "name": "Create Payment Page Request",
+            "description": {
+              "content": "Create a hosted payment page session and return a redirect URL the merchant can send the customer to in order to complete the payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"payment\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"country\": \"<string>\",\n    \"merchant_payment_code\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"amount_total\": \"<float>\",\n    \"payment_type_code\": \"<string>\",\n    \"redirect_url\": \"<uri>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06224ec1-9b21-44e7-bc5a-c143cc1a7b6c",
+              "name": "Payment page session created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"payment\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"country\": \"<string>\",\n    \"merchant_payment_code\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"amount_total\": \"<float>\",\n    \"payment_type_code\": \"<string>\",\n    \"redirect_url\": \"<uri>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"redirect_url\": \"http://w.bggeq70w1rHbztghrjT9Yt5EO2xTkfEnDhJuf-FyMMGngEYJcsiNSyDOx8OpBo\",\n  \"payment\": {\n    \"hash\": \"string\",\n    \"merchant_payment_code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ebanxpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-ebanx-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "91169f51-f762-484a-933e-89b35376d2fa",
+    "name": "EBANX Payment Page API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Hosted EBANX checkout. The merchant submits payment parameters and EBANX renders the full payment UI, validates the customer input, processes the payment, and returns the customer to the merchant via a redirect URL.\n\nContact Support:\n Name: EBANX Sales Engineering\n Email: sales.engineering@ebanx.com",
+      "type": "text/plain"
+    }
+  }
+}

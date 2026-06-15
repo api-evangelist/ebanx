@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "ff18048c-3f79-4dcd-824a-86fd0fb35768",
+      "name": "FX",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5120a038-54ec-4425-bede-5eacf78f5a74",
+          "name": "Get Exchange Rate",
+          "request": {
+            "name": "Get Exchange Rate",
+            "description": {
+              "content": "Return the current FX rate between a merchant pricing currency and a local payment currency for a given country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "exchange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"merchant_payment_code\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60cc4da9-6379-464c-8273-dacc9a004ea7",
+              "name": "FX quote",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "exchange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"merchant_payment_code\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"currency_rate\": {\n    \"currency_code\": \"string\",\n    \"country\": \"string\",\n    \"rate\": 1664.0577007808076\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3598f7d6-1830-4df6-9f41-96fe63aee43d",
+          "name": "Get FX Token",
+          "request": {
+            "name": "Get FX Token",
+            "description": {
+              "content": "Reserve an FX rate by minting a short-lived FX token. The token can be attached to a Direct Payment request to guarantee the previously quoted rate when the transaction is settled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "fxtoken",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"currency_base_code\": \"<string>\",\n  \"currency_ext_code\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5219b764-62a4-4b09-aeb3-bb7dead0336a",
+              "name": "FX token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "fxtoken",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"currency_base_code\": \"<string>\",\n  \"currency_ext_code\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"fx_token\": {\n    \"token\": \"string\",\n    \"expires_at\": \"1958-06-09T06:00:30.788Z\",\n    \"rate\": 1437.6580930050031\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ebanxpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-ebanx-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a6fcd930-a2c4-4e39-b7eb-65dd97894f5e",
+    "name": "EBANX FX API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.\n\nContact Support:\n Name: EBANX Sales Engineering\n Email: sales.engineering@ebanx.com",
+      "type": "text/plain"
+    }
+  }
+}

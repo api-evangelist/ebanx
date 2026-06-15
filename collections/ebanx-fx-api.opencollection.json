@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EBANX FX API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-ebanx-integration-key",
+      "value": "{{x-ebanx-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "FX",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Exchange Rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/exchange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return the current FX rate between a merchant pricing currency and a local payment currency for a given country."
+        },
+        {
+          "info": {
+            "name": "Get FX Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/fxtoken/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reserve an FX rate by minting a short-lived FX token. The token can be attached to a Direct Payment request to guarantee the previously quoted rate when the transaction is settled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

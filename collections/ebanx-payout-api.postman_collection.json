@@ -1,0 +1,1249 @@
+{
+  "item": [
+    {
+      "id": "8e7ddc67-65f8-4580-bc6c-022eb06a4bde",
+      "name": "Payouts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28a3f0d3-6387-4f7a-b249-24e0847a23b6",
+          "name": "Create Payout",
+          "request": {
+            "name": "Create Payout",
+            "description": {
+              "content": "Create a payout to a payee bank account or e-wallet. The payout starts in a draft state and must be committed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payee\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"country\": \"<string>\",\n    \"bank\": {\n      \"code\": \"<string>\",\n      \"agency\": \"<string>\",\n      \"account\": \"<string>\",\n      \"account_digit\": \"<string>\",\n      \"account_type\": \"<string>\"\n    }\n  },\n  \"target\": \"<string>\",\n  \"target_account\": \"<string>\",\n  \"currency_target\": \"<string>\",\n  \"amount_target\": \"<float>\",\n  \"currency_source\": \"<string>\",\n  \"amount_source\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20a83d96-1538-4ee9-af7f-7d4a523e2064",
+              "name": "Payout created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payee\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"country\": \"<string>\",\n    \"bank\": {\n      \"code\": \"<string>\",\n      \"agency\": \"<string>\",\n      \"account\": \"<string>\",\n      \"account_digit\": \"<string>\",\n      \"account_type\": \"<string>\"\n    }\n  },\n  \"target\": \"<string>\",\n  \"target_account\": \"<string>\",\n  \"currency_target\": \"<string>\",\n  \"amount_target\": \"<float>\",\n  \"currency_source\": \"<string>\",\n  \"amount_source\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"payout\": {\n    \"payout_uid\": \"string\",\n    \"external_uid\": \"string\",\n    \"status\": \"string\",\n    \"amount_target\": 9576.119235428603,\n    \"currency_target\": \"string\",\n    \"amount_source\": 2638.2251569347013,\n    \"currency_source\": \"string\",\n    \"fx_rate\": 4393.8362579628265,\n    \"fee\": 3259.681618646897,\n    \"created_at\": \"2012-10-27T01:47:19.827Z\",\n    \"estimated_settlement\": \"1971-12-27T21:18:17.291Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb138501-996e-4e4f-8d52-5177f648008c",
+          "name": "Commit Payout",
+          "request": {
+            "name": "Commit Payout",
+            "description": {
+              "content": "Confirm and release a previously created payout for settlement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "commit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payout_uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eeb60a88-c9f8-498d-9448-6e3262e6a75b",
+              "name": "Payout committed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "commit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payout_uid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2a74d7f-eca0-42f3-ae08-71d60b846930",
+          "name": "Cancel Payout",
+          "request": {
+            "name": "Cancel Payout",
+            "description": {
+              "content": "Cancel a payout that has not yet been committed or settled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payout_uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51f68e0f-33bb-41ac-9f74-cde208382581",
+              "name": "Payout cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payout_uid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4130d55-2ab1-4ad3-8a98-5ec40ba54605",
+          "name": "Retrieve Payout",
+          "request": {
+            "name": "Retrieve Payout",
+            "description": {
+              "content": "Retrieve the current status and settlement details of a payout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "retrieve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payout_uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12e85a2f-64d5-4ea0-a4f7-aced1b5888bf",
+              "name": "Payout details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payout_uid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"payout\": {\n    \"payout_uid\": \"string\",\n    \"external_uid\": \"string\",\n    \"status\": \"string\",\n    \"amount_target\": 9576.119235428603,\n    \"currency_target\": \"string\",\n    \"amount_source\": 2638.2251569347013,\n    \"currency_source\": \"string\",\n    \"fx_rate\": 4393.8362579628265,\n    \"fee\": 3259.681618646897,\n    \"created_at\": \"2012-10-27T01:47:19.827Z\",\n    \"estimated_settlement\": \"1971-12-27T21:18:17.291Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9db247d-ce4f-47d0-903c-48de3c6ee3a1",
+          "name": "Search Payouts",
+          "request": {
+            "name": "Search Payouts",
+            "description": {
+              "content": "Search payouts by date range, status, or payee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b451e972-8211-4f33-bed8-167f745fced5",
+              "name": "Payout list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1b677b2-8c82-4886-be64-9dca04ee0695",
+          "name": "Simulate Payout",
+          "request": {
+            "name": "Simulate Payout",
+            "description": {
+              "content": "Calculate the fees, FX rate, and final payee amount that would apply to a hypothetical payout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "simulate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payee\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"country\": \"<string>\",\n    \"bank\": {\n      \"code\": \"<string>\",\n      \"agency\": \"<string>\",\n      \"account\": \"<string>\",\n      \"account_digit\": \"<string>\",\n      \"account_type\": \"<string>\"\n    }\n  },\n  \"target\": \"<string>\",\n  \"target_account\": \"<string>\",\n  \"currency_target\": \"<string>\",\n  \"amount_target\": \"<float>\",\n  \"currency_source\": \"<string>\",\n  \"amount_source\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e074232-5669-4e6f-a8c7-475e7c3a3dfc",
+              "name": "Simulation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"external_uid\": \"<string>\",\n  \"payee\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"country\": \"<string>\",\n    \"bank\": {\n      \"code\": \"<string>\",\n      \"agency\": \"<string>\",\n      \"account\": \"<string>\",\n      \"account_digit\": \"<string>\",\n      \"account_type\": \"<string>\"\n    }\n  },\n  \"target\": \"<string>\",\n  \"target_account\": \"<string>\",\n  \"currency_target\": \"<string>\",\n  \"amount_target\": \"<float>\",\n  \"currency_source\": \"<string>\",\n  \"amount_source\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f86db5a-bde8-4bf7-a941-eefbe5c35f51",
+          "name": "Attach Invoice To Payout",
+          "request": {
+            "name": "Attach Invoice To Payout",
+            "description": {
+              "content": "Attach a tax invoice or supporting document to a payout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "attach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "integration_key",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "external_uid",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f3339aa7-cdf9-4687-9f04-5ec9752a23fc",
+              "name": "Invoice attached",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "attach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "integration_key",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "external_uid",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "970ada98-e773-4a1b-99d0-a103d9bc9306",
+          "name": "Get Payout Balance",
+          "request": {
+            "name": "Get Payout Balance",
+            "description": {
+              "content": "Return the current funded balance available for payouts in each supported currency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53804b1c-9617-4e32-8f4a-931615100f60",
+              "name": "Balance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"balance\": [\n    {\n      \"currency_code\": \"string\",\n      \"country\": \"string\",\n      \"amount\": 1038.5008113244699\n    },\n    {\n      \"currency_code\": \"string\",\n      \"country\": \"string\",\n      \"amount\": 4482.7878649453605\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c36f7b88-237a-472c-8808-d8462593e335",
+          "name": "List Payout Banks",
+          "request": {
+            "name": "List Payout Banks",
+            "description": {
+              "content": "List banks supported as payout destinations for a given country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "banks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c16122cb-40b1-44d3-a840-af37f0b543b2",
+              "name": "Bank list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "banks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "620ad049-5d46-4553-8c9e-c5c04b5f582b",
+          "name": "Get Payout Bank Details",
+          "request": {
+            "name": "Get Payout Bank Details",
+            "description": {
+              "content": "Return the field requirements for a destination bank in a given country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "bankDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"bank_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6de06b27-6430-4398-9700-4f34a695afea",
+              "name": "Bank requirements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "bankDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"bank_code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "181ab845-dac4-48e8-8b79-60248f2f9886",
+          "name": "Verify Payee Bank Account",
+          "request": {
+            "name": "Verify Payee Bank Account",
+            "description": {
+              "content": "Verify that a payee bank account exists and that the account holder name matches before sending funds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payout",
+                "verify_account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"agency\": \"<string>\",\n  \"account\": \"<string>\",\n  \"account_digit\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "735456de-af53-488b-b8f9-fbe7848385d3",
+              "name": "Verification result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payout",
+                    "verify_account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"bank_code\": \"<string>\",\n  \"agency\": \"<string>\",\n  \"account\": \"<string>\",\n  \"account_digit\": \"<string>\",\n  \"document\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "709cc803-a938-4064-8dcc-4b61eabaa157",
+          "name": "Create Payee",
+          "request": {
+            "name": "Create Payee",
+            "description": {
+              "content": "Register a reusable payee (beneficiary) record for repeat payouts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "payee",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"payee\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"country\": \"<string>\",\n    \"bank\": {\n      \"code\": \"<string>\",\n      \"agency\": \"<string>\",\n      \"account\": \"<string>\",\n      \"account_digit\": \"<string>\",\n      \"account_type\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ee5e9f5-74ee-4c47-842a-8e62a249e38b",
+              "name": "Payee created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "payee",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"payee\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"country\": \"<string>\",\n    \"bank\": {\n      \"code\": \"<string>\",\n      \"agency\": \"<string>\",\n      \"account\": \"<string>\",\n      \"account_digit\": \"<string>\",\n      \"account_type\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ebanxpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-ebanx-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e9c3f20b-cdf1-49f7-8506-dbcbad13ff0a",
+    "name": "EBANX Payout API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Send money from a merchant balance to a local bank account or e-wallet in EBANX's Latin American and emerging markets. Supports both local payouts (merchant pre-funds in local currency) and cross-border payouts (merchant deposits USD and EBANX converts to the payee's local currency), with bank transfers settled in up to two business days and e-wallets in roughly two minutes.\n\nContact Support:\n Name: EBANX Sales Engineering\n Email: sales.engineering@ebanx.com",
+      "type": "text/plain"
+    }
+  }
+}
