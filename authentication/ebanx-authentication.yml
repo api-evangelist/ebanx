@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ebanx-fx-api-openapi.yml, openapi/ebanx-pay-in-direct-api-openapi.yml, openapi/ebanx-payment-page-api-openapi.yml,
+  openapi/ebanx-payout-api-openapi.yml, openapi/ebanx-tokenization-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: integrationKey
+  type: apiKey
+  in: header
+  parameter: x-ebanx-integration-key
+  sources:
+  - openapi/ebanx-fx-api-openapi.yml
+  - openapi/ebanx-pay-in-direct-api-openapi.yml
+  - openapi/ebanx-payment-page-api-openapi.yml
+  - openapi/ebanx-payout-api-openapi.yml
+  - openapi/ebanx-tokenization-api-openapi.yml

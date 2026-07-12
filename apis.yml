@@ -272,3 +272,10 @@ maintainers:
   - name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com
     url: https://www.ebanx.com
+common:
+- type: TrustCenter
+  url: security/ebanx-trust-center.yml
+- type: DomainSecurity
+  url: security/ebanx-domain-security.yml
+- type: Authentication
+  url: authentication/ebanx-authentication.yml
