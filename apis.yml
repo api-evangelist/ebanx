@@ -273,6 +273,8 @@ maintainers:
     email: sales.engineering@ebanx.com
     url: https://www.ebanx.com
 common:
+- type: AgenticAccess
+  url: agentic-access/ebanx-agentic-access.yml
 - type: TrustCenter
   url: security/ebanx-trust-center.yml
 - type: DomainSecurity
