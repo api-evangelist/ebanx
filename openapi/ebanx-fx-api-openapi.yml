@@ -2,40 +2,48 @@ openapi: 3.0.3
 info:
   title: EBANX FX API
   version: '1.0'
-  description: >-
-    Retrieve current foreign exchange rates between local market currencies
-    (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR),
-    and lock a rate via an FX token so a quoted price is honored at capture.
+  description: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.
   contact:
     name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com
     url: https://docs.ebanx.com
 servers:
-  - url: https://api.ebanxpay.com
-    description: Production environment
-  - url: https://sandbox.ebanxpay.com
-    description: Sandbox environment for testing
+- url: https://api.ebanxpay.com
+  description: Production environment
+- url: https://sandbox.ebanxpay.com
+  description: Sandbox environment for testing
 security:
-  - integrationKey: []
+- integrationKey: []
+tags:
+- name: FX
 paths:
   /ws/exchange:
     post:
       summary: Get Exchange Rate
       operationId: getExchangeRate
       description: Return the current FX rate between a merchant pricing currency and a local payment currency for a given country.
-      tags: [FX]
+      tags:
+      - FX
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [integration_key, merchant_payment_code]
+              required:
+              - integration_key
+              - merchant_payment_code
               properties:
-                integration_key: { type: string }
-                merchant_payment_code: { type: string }
-                currency_code: { type: string, description: 'Source / merchant currency.' }
-                country: { type: string, description: 'Target country whose local currency is being quoted.' }
+                integration_key:
+                  type: string
+                merchant_payment_code:
+                  type: string
+                currency_code:
+                  type: string
+                  description: Source / merchant currency.
+                country:
+                  type: string
+                  description: Target country whose local currency is being quoted.
       responses:
         '200':
           description: FX quote
@@ -44,34 +52,45 @@ paths:
               schema:
                 type: object
                 properties:
-                  status: { type: string }
+                  status:
+                    type: string
                   currency_rate:
                     type: object
                     properties:
-                      currency_code: { type: string }
-                      country: { type: string }
-                      rate: { type: number, format: float }
+                      currency_code:
+                        type: string
+                      country:
+                        type: string
+                      rate:
+                        type: number
+                        format: float
   /ws/fxtoken/get:
     post:
       summary: Get FX Token
       operationId: getFxToken
-      description: >-
-        Reserve an FX rate by minting a short-lived FX token. The token can be
-        attached to a Direct Payment request to guarantee the previously quoted
-        rate when the transaction is settled.
-      tags: [FX]
+      description: Reserve an FX rate by minting a short-lived FX token. The token can be attached to a Direct Payment request to guarantee the previously quoted rate when the transaction is settled.
+      tags:
+      - FX
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [integration_key, currency_base_code, currency_ext_code, country]
+              required:
+              - integration_key
+              - currency_base_code
+              - currency_ext_code
+              - country
               properties:
-                integration_key: { type: string }
-                currency_base_code: { type: string }
-                currency_ext_code: { type: string }
-                country: { type: string }
+                integration_key:
+                  type: string
+                currency_base_code:
+                  type: string
+                currency_ext_code:
+                  type: string
+                country:
+                  type: string
       responses:
         '200':
           description: FX token
@@ -80,13 +99,19 @@ paths:
               schema:
                 type: object
                 properties:
-                  status: { type: string }
+                  status:
+                    type: string
                   fx_token:
                     type: object
                     properties:
-                      token: { type: string }
-                      expires_at: { type: string, format: date-time }
-                      rate: { type: number, format: float }
+                      token:
+                        type: string
+                      expires_at:
+                        type: string
+                        format: date-time
+                      rate:
+                        type: number
+                        format: float
 components:
   securitySchemes:
     integrationKey:

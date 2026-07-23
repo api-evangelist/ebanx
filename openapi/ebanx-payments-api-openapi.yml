@@ -1,38 +1,29 @@
 openapi: 3.0.3
 info:
-  title: EBANX Pay-in Direct API
+  title: EBANX FX Payments API
   version: '1.0'
-  description: >-
-    Direct integration with EBANX to accept payments from customers in Latin America
-    and other rising markets using local payment methods (Pix, Boleto, OXXO, SPEI,
-    PSE, credit and debit cards, e-wallets, vouchers). The Direct API gives
-    merchants full control over the checkout experience and is intended for
-    high-conversion flows, subscriptions, and advanced payment scenarios.
+  description: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.
   contact:
     name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com
     url: https://docs.ebanx.com
-  termsOfService: https://www.ebanx.com/en/legal/merchants/terms-and-conditions-for-payment-processing-services/
-  license:
-    name: EBANX Merchant Terms
-    url: https://www.ebanx.com/en/legal/merchants/terms-and-conditions-for-payment-processing-services/
 servers:
-  - url: https://api.ebanxpay.com
-    description: Production environment
-  - url: https://sandbox.ebanxpay.com
-    description: Sandbox environment for testing
+- url: https://api.ebanxpay.com
+  description: Production environment
+- url: https://sandbox.ebanxpay.com
+  description: Sandbox environment for testing
 security:
-  - integrationKey: []
+- integrationKey: []
+tags:
+- name: Payments
 paths:
   /ws/direct:
     post:
       summary: Create Direct Payment
       operationId: createDirectPayment
-      description: >-
-        Create a payment for a local payment method. Supports cards (with optional
-        3DS and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo,
-        and many local e-wallets across EBANX markets.
-      tags: [Payments]
+      description: Create a payment for a local payment method. Supports cards (with optional 3DS and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets across EBANX markets.
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -51,7 +42,8 @@ paths:
       summary: Capture Payment
       operationId: capturePayment
       description: Capture a previously authorized card payment.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -59,9 +51,13 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                hash: { type: string }
-                amount: { type: number, format: float }
+                integration_key:
+                  type: string
+                hash:
+                  type: string
+                amount:
+                  type: number
+                  format: float
       responses:
         '200':
           description: Captured
@@ -74,7 +70,8 @@ paths:
       summary: Query Payment
       operationId: queryPayment
       description: Retrieve the current status and details of a payment by EBANX hash or merchant payment code.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -82,9 +79,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                hash: { type: string }
-                merchant_payment_code: { type: string }
+                integration_key:
+                  type: string
+                hash:
+                  type: string
+                merchant_payment_code:
+                  type: string
       responses:
         '200':
           description: Payment details
@@ -97,7 +97,8 @@ paths:
       summary: Cancel Payment
       operationId: cancelPayment
       description: Cancel an unpaid or pre-authorized payment.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -105,8 +106,10 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                hash: { type: string }
+                integration_key:
+                  type: string
+                hash:
+                  type: string
       responses:
         '200':
           description: Cancellation result
@@ -119,7 +122,8 @@ paths:
       summary: Refund Payment
       operationId: refundPayment
       description: Request a full or partial refund for a paid transaction.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -138,7 +142,8 @@ paths:
       summary: Refund Or Cancel Payment
       operationId: refundOrCancelPayment
       description: Cancel the payment if not yet captured, otherwise issue a refund.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -157,7 +162,8 @@ paths:
       summary: List Installments Plan
       operationId: listInstallmentsPlan
       description: Retrieve the available installment plans for a given country, amount, and BIN.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -165,11 +171,17 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                amount: { type: number, format: float }
-                currency_code: { type: string }
-                country: { type: string }
-                payment_type_code: { type: string }
+                integration_key:
+                  type: string
+                amount:
+                  type: number
+                  format: float
+                currency_code:
+                  type: string
+                country:
+                  type: string
+                payment_type_code:
+                  type: string
       responses:
         '200':
           description: Installment plan
@@ -178,7 +190,8 @@ paths:
       summary: Lookup Card BIN
       operationId: lookupCardBin
       description: Identify the issuer, brand, and country for a card BIN.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -186,8 +199,10 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                bin: { type: string }
+                integration_key:
+                  type: string
+                bin:
+                  type: string
       responses:
         '200':
           description: BIN information
@@ -196,7 +211,8 @@ paths:
       summary: List Available Banks
       operationId: listAvailableBanks
       description: List banks available for a given country and payment method.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -204,9 +220,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                country: { type: string }
-                operation: { type: string }
+                integration_key:
+                  type: string
+                country:
+                  type: string
+                operation:
+                  type: string
       responses:
         '200':
           description: Bank list
@@ -215,7 +234,8 @@ paths:
       summary: List Available E-Wallets
       operationId: listAvailableEWallets
       description: List e-wallets supported for a given country, currency, and amount.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -223,10 +243,15 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                country: { type: string }
-                currency_code: { type: string }
-                amount: { type: number, format: float }
+                integration_key:
+                  type: string
+                country:
+                  type: string
+                currency_code:
+                  type: string
+                amount:
+                  type: number
+                  format: float
       responses:
         '200':
           description: E-wallet list
@@ -235,7 +260,8 @@ paths:
       summary: Resend Bank Info
       operationId: updateCustomerBankInfo
       description: Resend the bank slip or transfer information to the customer for a Boleto or bank transfer payment.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -243,9 +269,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                hash: { type: string }
-                email: { type: string }
+                integration_key:
+                  type: string
+                hash:
+                  type: string
+                email:
+                  type: string
       responses:
         '200':
           description: Result
@@ -254,7 +283,8 @@ paths:
       summary: Print Voucher Or Slip
       operationId: printVoucherOrSlip
       description: Return a printable HTML or PDF voucher for cash/voucher payment methods such as Boleto, OXXO, Efecty, and PagoEfectivo.
-      tags: [Payments]
+      tags:
+      - Payments
       requestBody:
         required: true
         content:
@@ -262,98 +292,159 @@ paths:
             schema:
               type: object
               properties:
-                hash: { type: string }
+                hash:
+                  type: string
       responses:
         '200':
           description: Printable slip
 components:
-  securitySchemes:
-    integrationKey:
-      type: apiKey
-      in: header
-      name: x-ebanx-integration-key
-      description: >-
-        EBANX integration key. Historically passed in the JSON body as
-        `integration_key`, also accepted via the `x-ebanx-integration-key`
-        header. Sandbox and production credentials are distinct.
   schemas:
-    DirectPaymentRequest:
-      type: object
-      required: [integration_key, operation, payment]
-      properties:
-        integration_key: { type: string }
-        operation:
-          type: string
-          enum: [request]
-        payment:
-          $ref: '#/components/schemas/Payment'
     Payment:
       type: object
       properties:
-        name: { type: string }
-        email: { type: string, format: email }
-        document: { type: string, description: 'Local tax id (CPF, RFC, NIT, etc.).' }
-        country: { type: string, description: 'ISO 3166-1 alpha-2 country code.' }
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        document:
+          type: string
+          description: Local tax id (CPF, RFC, NIT, etc.).
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
         payment_type_code:
           type: string
-          description: 'Payment method code (e.g., visa, mastercard, _all, pix, boleto, oxxo, spei, pse, efecty).'
-        merchant_payment_code: { type: string }
-        currency_code: { type: string }
-        amount_total: { type: number, format: float }
-        instalments: { type: integer, minimum: 1 }
+          description: Payment method code (e.g., visa, mastercard, _all, pix, boleto, oxxo, spei, pse, efecty).
+        merchant_payment_code:
+          type: string
+        currency_code:
+          type: string
+        amount_total:
+          type: number
+          format: float
+        instalments:
+          type: integer
+          minimum: 1
         creditcard:
           type: object
           properties:
-            card_number: { type: string }
-            card_name: { type: string }
-            card_due_date: { type: string }
-            card_cvv: { type: string }
-            token: { type: string }
+            card_number:
+              type: string
+            card_name:
+              type: string
+            card_due_date:
+              type: string
+            card_cvv:
+              type: string
+            token:
+              type: string
+    RefundRequest:
+      type: object
+      required:
+      - integration_key
+      - operation
+      properties:
+        integration_key:
+          type: string
+        operation:
+          type: string
+          enum:
+          - request
+          - confirm
+          - cancel
+        hash:
+          type: string
+        amount:
+          type: number
+          format: float
+        description:
+          type: string
+        refund_id:
+          type: string
+    DirectPaymentRequest:
+      type: object
+      required:
+      - integration_key
+      - operation
+      - payment
+      properties:
+        integration_key:
+          type: string
+        operation:
+          type: string
+          enum:
+          - request
+        payment:
+          $ref: '#/components/schemas/Payment'
     PaymentResponse:
       type: object
       properties:
         status:
           type: string
-          enum: [SUCCESS, ERROR]
+          enum:
+          - SUCCESS
+          - ERROR
         payment:
           type: object
           properties:
-            hash: { type: string }
-            merchant_payment_code: { type: string }
-            status: { type: string, enum: [PE, CA, OP, CO, PN] }
-            country: { type: string }
-            payment_type_code: { type: string }
-            amount_br: { type: number }
-            amount_iof: { type: number }
-            amount_ext: { type: number }
-            currency_rate: { type: number }
-            currency_ext: { type: string }
-            due_date: { type: string, format: date }
-            instalments: { type: string }
-            transfer_status: { type: string }
-        status_code: { type: string }
-        status_message: { type: string }
-    RefundRequest:
-      type: object
-      required: [integration_key, operation]
-      properties:
-        integration_key: { type: string }
-        operation:
+            hash:
+              type: string
+            merchant_payment_code:
+              type: string
+            status:
+              type: string
+              enum:
+              - PE
+              - CA
+              - OP
+              - CO
+              - PN
+            country:
+              type: string
+            payment_type_code:
+              type: string
+            amount_br:
+              type: number
+            amount_iof:
+              type: number
+            amount_ext:
+              type: number
+            currency_rate:
+              type: number
+            currency_ext:
+              type: string
+            due_date:
+              type: string
+              format: date
+            instalments:
+              type: string
+            transfer_status:
+              type: string
+        status_code:
           type: string
-          enum: [request, confirm, cancel]
-        hash: { type: string }
-        amount: { type: number, format: float }
-        description: { type: string }
-        refund_id: { type: string }
+        status_message:
+          type: string
     RefundResponse:
       type: object
       properties:
-        status: { type: string }
+        status:
+          type: string
         refund:
           type: object
           properties:
-            id: { type: string }
-            merchant_refund_code: { type: string }
-            status: { type: string }
-            amount_ext: { type: number }
-            description: { type: string }
+            id:
+              type: string
+            merchant_refund_code:
+              type: string
+            status:
+              type: string
+            amount_ext:
+              type: number
+            description:
+              type: string
+  securitySchemes:
+    integrationKey:
+      type: apiKey
+      in: header
+      name: x-ebanx-integration-key

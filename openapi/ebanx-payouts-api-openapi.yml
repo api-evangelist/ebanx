@@ -1,32 +1,29 @@
 openapi: 3.0.3
 info:
-  title: EBANX Payout API
+  title: EBANX FX Payouts API
   version: '1.0'
-  description: >-
-    Send money from a merchant balance to a local bank account or e-wallet in
-    EBANX's Latin American and emerging markets. Supports both local payouts
-    (merchant pre-funds in local currency) and cross-border payouts (merchant
-    deposits USD and EBANX converts to the payee's local currency), with bank
-    transfers settled in up to two business days and e-wallets in roughly two
-    minutes.
+  description: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.
   contact:
     name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com
     url: https://docs.ebanx.com
 servers:
-  - url: https://api.ebanxpay.com
-    description: Production environment
-  - url: https://sandbox.ebanxpay.com
-    description: Sandbox environment for testing
+- url: https://api.ebanxpay.com
+  description: Production environment
+- url: https://sandbox.ebanxpay.com
+  description: Sandbox environment for testing
 security:
-  - integrationKey: []
+- integrationKey: []
+tags:
+- name: Payouts
 paths:
   /ws/payout/create:
     post:
       summary: Create Payout
       operationId: createPayout
       description: Create a payout to a payee bank account or e-wallet. The payout starts in a draft state and must be committed.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -45,7 +42,8 @@ paths:
       summary: Commit Payout
       operationId: commitPayout
       description: Confirm and release a previously created payout for settlement.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -53,9 +51,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                external_uid: { type: string }
-                payout_uid: { type: string }
+                integration_key:
+                  type: string
+                external_uid:
+                  type: string
+                payout_uid:
+                  type: string
       responses:
         '200':
           description: Payout committed
@@ -64,7 +65,8 @@ paths:
       summary: Cancel Payout
       operationId: cancelPayout
       description: Cancel a payout that has not yet been committed or settled.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -72,9 +74,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                external_uid: { type: string }
-                payout_uid: { type: string }
+                integration_key:
+                  type: string
+                external_uid:
+                  type: string
+                payout_uid:
+                  type: string
       responses:
         '200':
           description: Payout cancelled
@@ -83,7 +88,8 @@ paths:
       summary: Retrieve Payout
       operationId: retrievePayout
       description: Retrieve the current status and settlement details of a payout.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -91,9 +97,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                external_uid: { type: string }
-                payout_uid: { type: string }
+                integration_key:
+                  type: string
+                external_uid:
+                  type: string
+                payout_uid:
+                  type: string
       responses:
         '200':
           description: Payout details
@@ -106,7 +115,8 @@ paths:
       summary: Search Payouts
       operationId: searchPayouts
       description: Search payouts by date range, status, or payee.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -114,10 +124,16 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                start_date: { type: string, format: date }
-                end_date: { type: string, format: date }
-                status: { type: string }
+                integration_key:
+                  type: string
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                status:
+                  type: string
       responses:
         '200':
           description: Payout list
@@ -126,7 +142,8 @@ paths:
       summary: Simulate Payout
       operationId: simulatePayout
       description: Calculate the fees, FX rate, and final payee amount that would apply to a hypothetical payout.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -141,7 +158,8 @@ paths:
       summary: Attach Invoice To Payout
       operationId: attachPayoutInvoice
       description: Attach a tax invoice or supporting document to a payout.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -149,9 +167,13 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                external_uid: { type: string }
-                file: { type: string, format: binary }
+                integration_key:
+                  type: string
+                external_uid:
+                  type: string
+                file:
+                  type: string
+                  format: binary
       responses:
         '200':
           description: Invoice attached
@@ -160,7 +182,8 @@ paths:
       summary: Get Payout Balance
       operationId: getPayoutBalance
       description: Return the current funded balance available for payouts in each supported currency.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -168,7 +191,8 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
+                integration_key:
+                  type: string
       responses:
         '200':
           description: Balance
@@ -177,21 +201,27 @@ paths:
               schema:
                 type: object
                 properties:
-                  status: { type: string }
+                  status:
+                    type: string
                   balance:
                     type: array
                     items:
                       type: object
                       properties:
-                        currency_code: { type: string }
-                        country: { type: string }
-                        amount: { type: number, format: float }
+                        currency_code:
+                          type: string
+                        country:
+                          type: string
+                        amount:
+                          type: number
+                          format: float
   /ws/payout/banks:
     post:
       summary: List Payout Banks
       operationId: listPayoutBanks
       description: List banks supported as payout destinations for a given country.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -199,8 +229,10 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                country: { type: string }
+                integration_key:
+                  type: string
+                country:
+                  type: string
       responses:
         '200':
           description: Bank list
@@ -209,7 +241,8 @@ paths:
       summary: Get Payout Bank Details
       operationId: getPayoutBankDetails
       description: Return the field requirements for a destination bank in a given country.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -217,9 +250,12 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                country: { type: string }
-                bank_code: { type: string }
+                integration_key:
+                  type: string
+                country:
+                  type: string
+                bank_code:
+                  type: string
       responses:
         '200':
           description: Bank requirements
@@ -228,7 +264,8 @@ paths:
       summary: Verify Payee Bank Account
       operationId: verifyPayeeBankAccount
       description: Verify that a payee bank account exists and that the account holder name matches before sending funds.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -236,13 +273,20 @@ paths:
             schema:
               type: object
               properties:
-                integration_key: { type: string }
-                country: { type: string }
-                bank_code: { type: string }
-                agency: { type: string }
-                account: { type: string }
-                account_digit: { type: string }
-                document: { type: string }
+                integration_key:
+                  type: string
+                country:
+                  type: string
+                bank_code:
+                  type: string
+                agency:
+                  type: string
+                account:
+                  type: string
+                account_digit:
+                  type: string
+                document:
+                  type: string
       responses:
         '200':
           description: Verification result
@@ -251,7 +295,8 @@ paths:
       summary: Create Payee
       operationId: createPayee
       description: Register a reusable payee (beneficiary) record for repeat payouts.
-      tags: [Payouts]
+      tags:
+      - Payouts
       requestBody:
         required: true
         content:
@@ -262,64 +307,110 @@ paths:
         '200':
           description: Payee created
 components:
-  securitySchemes:
-    integrationKey:
-      type: apiKey
-      in: header
-      name: x-ebanx-integration-key
   schemas:
-    PayoutRequest:
-      type: object
-      required: [integration_key, external_uid, payee]
-      properties:
-        integration_key: { type: string }
-        external_uid: { type: string, description: 'Merchant-provided unique identifier for the payout.' }
-        target: { type: string, enum: [bank_account, e_wallet] }
-        target_account: { type: string }
-        currency_target: { type: string }
-        amount_target: { type: number, format: float }
-        currency_source: { type: string }
-        amount_source: { type: number, format: float }
-        payee:
-          $ref: '#/components/schemas/Payee'
-    Payee:
-      type: object
-      properties:
-        name: { type: string }
-        email: { type: string, format: email }
-        document: { type: string }
-        document_type: { type: string, description: 'Local tax id type (CPF, CNPJ, RFC, NIT, etc.).' }
-        country: { type: string }
-        bank:
-          type: object
-          properties:
-            code: { type: string }
-            agency: { type: string }
-            account: { type: string }
-            account_digit: { type: string }
-            account_type: { type: string }
     PayeeRequest:
       type: object
-      required: [integration_key, payee]
+      required:
+      - integration_key
+      - payee
       properties:
-        integration_key: { type: string }
+        integration_key:
+          type: string
         payee:
           $ref: '#/components/schemas/Payee'
     PayoutResponse:
       type: object
       properties:
-        status: { type: string }
+        status:
+          type: string
         payout:
           type: object
           properties:
-            payout_uid: { type: string }
-            external_uid: { type: string }
-            status: { type: string }
-            amount_target: { type: number }
-            currency_target: { type: string }
-            amount_source: { type: number }
-            currency_source: { type: string }
-            fx_rate: { type: number }
-            fee: { type: number }
-            created_at: { type: string, format: date-time }
-            estimated_settlement: { type: string, format: date-time }
+            payout_uid:
+              type: string
+            external_uid:
+              type: string
+            status:
+              type: string
+            amount_target:
+              type: number
+            currency_target:
+              type: string
+            amount_source:
+              type: number
+            currency_source:
+              type: string
+            fx_rate:
+              type: number
+            fee:
+              type: number
+            created_at:
+              type: string
+              format: date-time
+            estimated_settlement:
+              type: string
+              format: date-time
+    Payee:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        document:
+          type: string
+        document_type:
+          type: string
+          description: Local tax id type (CPF, CNPJ, RFC, NIT, etc.).
+        country:
+          type: string
+        bank:
+          type: object
+          properties:
+            code:
+              type: string
+            agency:
+              type: string
+            account:
+              type: string
+            account_digit:
+              type: string
+            account_type:
+              type: string
+    PayoutRequest:
+      type: object
+      required:
+      - integration_key
+      - external_uid
+      - payee
+      properties:
+        integration_key:
+          type: string
+        external_uid:
+          type: string
+          description: Merchant-provided unique identifier for the payout.
+        target:
+          type: string
+          enum:
+          - bank_account
+          - e_wallet
+        target_account:
+          type: string
+        currency_target:
+          type: string
+        amount_target:
+          type: number
+          format: float
+        currency_source:
+          type: string
+        amount_source:
+          type: number
+          format: float
+        payee:
+          $ref: '#/components/schemas/Payee'
+  securitySchemes:
+    integrationKey:
+      type: apiKey
+      in: header
+      name: x-ebanx-integration-key
