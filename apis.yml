@@ -25,6 +25,19 @@ description: >-
   EBANX is best known for connecting global merchants to local payment methods like Pix, Pix Automatico, Boleto, OXXO,
   SPEI, PSE, Efecty, PagoEfectivo, Nequi, Mercado Pago, NuPay, PicPay, and dozens of others, plus an expanding
   recurring-payments product on top of alternative payment methods.
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.ebanx.com/static/images/ebanx-symbol-yellow.svg
 created: '2026-05-24'
 modified: '2026-05-24'
@@ -33,142 +46,168 @@ specificationVersion: '0.18'
 humanURL: https://www.ebanx.com
 baseURL: https://api.ebanxpay.com
 apis:
-  - aid: ebanx:ebanx-pay-in-direct-api
-    name: EBANX Pay-in Direct API
-    tags:
-      - Payments
-      - Pay-in
-      - Direct API
-      - Pix
-      - Boleto
-      - OXXO
-      - SPEI
-      - PSE
-      - Cards
-    humanURL: https://docs.ebanx.com/api/
-    baseURL: https://api.ebanxpay.com
-    properties:
-      - url: https://docs.ebanx.com/api/
-        type: APIReference
-      - url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/direct-api
-        type: Documentation
-      - url: https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
-        type: Documentation
-      - url: openapi/ebanx-pay-in-direct-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/ebanx-payment-schema.json
-        type: JSONSchema
-      - url: json-schema/ebanx-refund-schema.json
-        type: JSONSchema
-      - url: json-structure/ebanx-payment-structure.json
-        type: JSONStructure
-      - url: examples/ebanx-create-direct-payment-pix-example.json
-        type: Examples
-      - url: examples/ebanx-create-direct-payment-card-example.json
-        type: Examples
-    description: >-
-      Direct integration that gives merchants full control of the checkout experience. Accept cards (with optional 3DS
-      and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets across EBANX
-      markets. Includes capture, query, cancel, refund, refundOrCancel, installment-plan lookup, BIN lookup,
-      available-banks lookup, available e-wallets lookup, and customer bank-info resend.
-  - aid: ebanx:ebanx-payment-page-api
-    name: EBANX Payment Page API
-    tags:
-      - Payments
-      - Pay-in
-      - Hosted Checkout
-    humanURL: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
-    baseURL: https://api.ebanxpay.com
-    properties:
-      - url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
-        type: Documentation
-      - url: openapi/ebanx-payment-page-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Hosted EBANX checkout. The merchant submits payment parameters and EBANX renders the full payment UI, validates
-      the customer input, processes the payment, and returns the customer to the merchant via a redirect URL. Ideal for
-      merchants who want to outsource PCI scope and per-market UI work.
-  - aid: ebanx:ebanx-tokenization-api
-    name: EBANX Tokenization API
-    tags:
-      - Payments
-      - Tokenization
-      - Cards
-      - PCI
-    humanURL: https://docs.ebanx.com/api/
-    baseURL: https://api.ebanxpay.com
-    properties:
-      - url: https://docs.ebanx.com/api/
-        type: APIReference
-      - url: openapi/ebanx-tokenization-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/ebanx-card-token-schema.json
-        type: JSONSchema
-    description: >-
-      Tokenize cards on EBANX so PAN never touches merchant servers, and refresh CVVs on stored tokens before high-risk
-      reuse. Reusable tokens power one-click checkout, subscriptions, and stored-card flows.
-  - aid: ebanx:ebanx-fx-api
-    name: EBANX FX API
-    tags:
-      - Foreign Exchange
-      - FX
-      - Cross-Border
-    humanURL: https://docs.ebanx.com/api/
-    baseURL: https://api.ebanxpay.com
-    properties:
-      - url: https://docs.ebanx.com/api/
-        type: APIReference
-      - url: openapi/ebanx-fx-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Quote current FX rates between a merchant pricing currency (typically USD or EUR) and EBANX market currencies, and
-      mint a short-lived FX token to lock a rate so a quoted price is honored when the underlying Direct Payment is
-      captured.
-  - aid: ebanx:ebanx-payout-api
-    name: EBANX Payout API
-    tags:
-      - Payouts
-      - Disbursements
-      - Cross-Border
-      - LATAM
-    humanURL: https://docs.ebanx.com/docs/payout/payouts-overview
-    baseURL: https://api.ebanxpay.com
-    properties:
-      - url: https://docs.ebanx.com/docs/payout/payouts-overview
-        type: Documentation
-      - url: https://docs.ebanx.com/api/
-        type: APIReference
-      - url: openapi/ebanx-payout-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/ebanx-payout-schema.json
-        type: JSONSchema
-      - url: json-structure/ebanx-payout-structure.json
-        type: JSONStructure
-      - url: examples/ebanx-create-payout-example.json
-        type: Examples
-    description: >-
-      Send money from a merchant funded balance to a payee bank account or e-wallet in any EBANX market. Supports local
-      payouts (merchant funds in local currency) and cross-border payouts (merchant deposits USD and EBANX converts to
-      the payee currency). Includes create, commit, cancel, retrieve, search, simulate, attach invoice, balance, bank
-      list, bank detail, payee creation, and bank-account verification.
-  - aid: ebanx:ebanx-notifications
-    name: EBANX Payment Notifications
-    tags:
-      - Webhooks
-      - Notifications
-      - Events
-    humanURL: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
-    properties:
-      - url: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
-        type: Documentation
-      - url: asyncapi/ebanx-notifications-asyncapi.yml
-        type: AsyncAPI
-      - url: examples/ebanx-payment-notification-example.json
-        type: Examples
-    description: >-
-      Signed HTTP POST callbacks delivered to a merchant-configured Notification URL whenever a payment, refund,
-      chargeback, or Pix MED return request changes state. Each callback carries the EBANX hash so the merchant can
-      re-query the Direct API for authoritative payment state.
+- aid: ebanx:ebanx-tokenization-api
+  name: EBANX Tokenization API
+  tags:
+  - Payments
+  - Tokenization
+  - Cards
+  - PCI
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/api/
+    type: APIReference
+  - url: openapi/ebanx-tokenization-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/ebanx-card-token-schema.json
+    type: JSONSchema
+  description: >-
+    Tokenize cards on EBANX so PAN never touches merchant servers, and refresh CVVs on stored tokens before
+    high-risk reuse. Reusable tokens power one-click checkout, subscriptions, and stored-card flows.
+- aid: ebanx:ebanx-fx-api
+  name: EBANX FX API
+  tags:
+  - Foreign Exchange
+  - FX
+  - Cross-Border
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  properties:
+  - url: https://docs.ebanx.com/api/
+    type: APIReference
+  - url: openapi/ebanx-fx-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Quote current FX rates between a merchant pricing currency (typically USD or EUR) and EBANX market
+    currencies, and mint a short-lived FX token to lock a rate so a quoted price is honored when the underlying
+    Direct Payment is captured.
+- aid: ebanx:ebanx-notifications
+  name: EBANX Payment Notifications
+  tags:
+  - Webhooks
+  - Notifications
+  - Events
+  humanURL: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
+  properties:
+  - url: https://docs.ebanx.com/docs/payments/guides/features/payment-notifications/
+    type: Documentation
+  - url: asyncapi/ebanx-notifications-asyncapi.yml
+    type: AsyncAPI
+  - url: examples/ebanx-payment-notification-example.json
+    type: Examples
+  description: >-
+    Signed HTTP POST callbacks delivered to a merchant-configured Notification URL whenever a payment,
+    refund, chargeback, or Pix MED return request changes state. Each callback carries the EBANX hash
+    so the merchant can re-query the Direct API for authoritative payment state.
+- aid: ebanx:ebanx-paymentpage-api
+  name: EBANX PaymentPage API
+  description: The PaymentPage API from EBANX — 1 operation(s) for paymentpage.
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  tags:
+  - PaymentPage
+  properties:
+  - type: OpenAPI
+    url: openapi/ebanx-paymentpage-api-openapi.yml
+  - type: APIReference
+    url: https://docs.ebanx.com/api/
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/direct-api
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
+  - type: JSONSchema
+    url: json-schema/ebanx-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/ebanx-refund-schema.json
+  - type: JSONStructure
+    url: json-structure/ebanx-payment-structure.json
+  - type: Examples
+    url: examples/ebanx-create-direct-payment-pix-example.json
+  - type: Examples
+    url: examples/ebanx-create-direct-payment-card-example.json
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/payout/payouts-overview
+  - type: JSONSchema
+    url: json-schema/ebanx-payout-schema.json
+  - type: JSONStructure
+    url: json-structure/ebanx-payout-structure.json
+  - type: Examples
+    url: examples/ebanx-create-payout-example.json
+- aid: ebanx:ebanx-payments-api
+  name: EBANX Payments API
+  description: The Payments API from EBANX — 12 operation(s) for payments.
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/ebanx-payments-api-openapi.yml
+  - type: APIReference
+    url: https://docs.ebanx.com/api/
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/direct-api
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
+  - type: JSONSchema
+    url: json-schema/ebanx-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/ebanx-refund-schema.json
+  - type: JSONStructure
+    url: json-structure/ebanx-payment-structure.json
+  - type: Examples
+    url: examples/ebanx-create-direct-payment-pix-example.json
+  - type: Examples
+    url: examples/ebanx-create-direct-payment-card-example.json
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/payout/payouts-overview
+  - type: JSONSchema
+    url: json-schema/ebanx-payout-schema.json
+  - type: JSONStructure
+    url: json-structure/ebanx-payout-structure.json
+  - type: Examples
+    url: examples/ebanx-create-payout-example.json
+- aid: ebanx:ebanx-payouts-api
+  name: EBANX Payouts API
+  description: The Payouts API from EBANX — 12 operation(s) for payouts.
+  humanURL: https://docs.ebanx.com/api/
+  baseURL: https://api.ebanxpay.com
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/ebanx-payouts-api-openapi.yml
+  - type: APIReference
+    url: https://docs.ebanx.com/api/
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/direct-api
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/pay-in-guide
+  - type: JSONSchema
+    url: json-schema/ebanx-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/ebanx-refund-schema.json
+  - type: JSONStructure
+    url: json-structure/ebanx-payment-structure.json
+  - type: Examples
+    url: examples/ebanx-create-direct-payment-pix-example.json
+  - type: Examples
+    url: examples/ebanx-create-direct-payment-card-example.json
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/pay-in/solution/integration-methods/payment-page
+  - type: Documentation
+    url: https://docs.ebanx.com/docs/payout/payouts-overview
+  - type: JSONSchema
+    url: json-schema/ebanx-payout-schema.json
+  - type: JSONStructure
+    url: json-structure/ebanx-payout-structure.json
+  - type: Examples
+    url: examples/ebanx-create-payout-example.json
 properties:
   - url: https://www.ebanx.com
     type: Portal
