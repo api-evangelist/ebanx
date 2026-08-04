@@ -1,0 +1,22 @@
+{
+  "provider": "ebanx",
+  "sources": [
+    "ebanx-fx-api-openapi.yml",
+    "ebanx-paymentpage-api-openapi.yml",
+    "ebanx-payments-api-openapi.yml",
+    "ebanx-payouts-api-openapi.yml",
+    "ebanx-tokenization-api-openapi.yml"
+  ],
+  "outputs": [
+    "ebanx-fx-api-openapi.yml",
+    "ebanx-paymentpage-api-openapi.yml",
+    "ebanx-payments-api-openapi.yml",
+    "ebanx-payouts-api-openapi.yml",
+    "ebanx-tokenization-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
