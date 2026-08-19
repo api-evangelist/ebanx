@@ -42,7 +42,7 @@ image: https://www.ebanx.com/static/images/ebanx-symbol-yellow.svg
 created: '2026-05-24'
 modified: '2026-05-24'
 position: Consuming
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 humanURL: https://www.ebanx.com
 baseURL: https://api.ebanxpay.com
 apis:
