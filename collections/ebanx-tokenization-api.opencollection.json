@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "EBANX Tokenization API",
+    "name": "EBANX FX Tokenization API",
     "version": "1.0"
   },
   "request": {

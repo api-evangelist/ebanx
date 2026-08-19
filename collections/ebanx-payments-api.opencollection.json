@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EBANX FX Payments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-ebanx-integration-key",
+      "value": "{{x-ebanx-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Direct Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/direct",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment for a local payment method. Supports cards (with optional 3DS and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets across EBANX markets."
+        },
+        {
+          "info": {
+            "name": "Capture Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/capture",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture a previously authorized card payment."
+        },
+        {
+          "info": {
+            "name": "Query Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the current status and details of a payment by EBANX hash or merchant payment code."
+        },
+        {
+          "info": {
+            "name": "Cancel Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an unpaid or pre-authorized payment."
+        },
+        {
+          "info": {
+            "name": "Refund Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/refund",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a full or partial refund for a paid transaction."
+        },
+        {
+          "info": {
+            "name": "Refund Or Cancel Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/refundOrCancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel the payment if not yet captured, otherwise issue a refund."
+        },
+        {
+          "info": {
+            "name": "List Installments Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/instalmentsPlan",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the available installment plans for a given country, amount, and BIN."
+        },
+        {
+          "info": {
+            "name": "Lookup Card BIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/cardbin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Identify the issuer, brand, and country for a card BIN."
+        },
+        {
+          "info": {
+            "name": "List Available Banks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/getBankList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List banks available for a given country and payment method."
+        },
+        {
+          "info": {
+            "name": "List Available E-Wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/ewallet-availableEWallets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List e-wallets supported for a given country, currency, and amount."
+        },
+        {
+          "info": {
+            "name": "Resend Bank Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/updatecustomerbankinfo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resend the bank slip or transfer information to the customer for a Boleto or bank transfer payment."
+        },
+        {
+          "info": {
+            "name": "Print Voucher Or Slip",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/print",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return a printable HTML or PDF voucher for cash/voucher payment methods such as Boleto, OXXO, Efecty, and PagoEfectivo."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

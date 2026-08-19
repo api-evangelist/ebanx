@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "ff18048c-3f79-4dcd-824a-86fd0fb35768",
+      "id": "68c3a427-241f-47b8-a123-edf48315fe62",
       "name": "FX",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "5120a038-54ec-4425-bede-5eacf78f5a74",
+          "id": "585490e1-943c-4c99-bf2e-efd0d3d89587",
           "name": "Get Exchange Rate",
           "request": {
             "name": "Get Exchange Rate",
@@ -52,7 +52,7 @@
           },
           "response": [
             {
-              "id": "60cc4da9-6379-464c-8273-dacc9a004ea7",
+              "id": "1405c5f8-a4e9-40fc-83a0-70f95b2ee7fc",
               "name": "FX quote",
               "originalRequest": {
                 "url": {
@@ -99,7 +99,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"currency_rate\": {\n    \"currency_code\": \"string\",\n    \"country\": \"string\",\n    \"rate\": 1664.0577007808076\n  }\n}",
+              "body": "{\n  \"status\": \"string\",\n  \"currency_rate\": {\n    \"currency_code\": \"string\",\n    \"country\": \"string\",\n    \"rate\": 6860.154878512673\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -110,7 +110,7 @@
           }
         },
         {
-          "id": "3598f7d6-1830-4df6-9f41-96fe63aee43d",
+          "id": "61f3fbe6-1390-4807-ae13-0cf8254ecd08",
           "name": "Get FX Token",
           "request": {
             "name": "Get FX Token",
@@ -154,7 +154,7 @@
           },
           "response": [
             {
-              "id": "5219b764-62a4-4b09-aeb3-bb7dead0336a",
+              "id": "79a30519-aef8-4663-8519-e76fa56a3371",
               "name": "FX token",
               "originalRequest": {
                 "url": {
@@ -202,7 +202,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"fx_token\": {\n    \"token\": \"string\",\n    \"expires_at\": \"1958-06-09T06:00:30.788Z\",\n    \"rate\": 1437.6580930050031\n  }\n}",
+              "body": "{\n  \"status\": \"string\",\n  \"fx_token\": {\n    \"token\": \"string\",\n    \"expires_at\": \"1988-10-12T07:53:33.568Z\",\n    \"rate\": 4817.0945639897955\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -242,7 +242,7 @@
     ]
   },
   "info": {
-    "_postman_id": "a6fcd930-a2c4-4e39-b7eb-65dd97894f5e",
+    "_postman_id": "5e62d72a-24c2-4e62-8390-007a1371d99c",
     "name": "EBANX FX API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {

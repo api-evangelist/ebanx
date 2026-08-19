@@ -1,0 +1,1211 @@
+{
+  "item": [
+    {
+      "id": "1bbbc532-c258-4871-b0c3-64647c1fb1e9",
+      "name": "Payments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b7ee50a-2cfd-4a5c-a61c-738b2014bd4f",
+          "name": "Create Direct Payment",
+          "request": {
+            "name": "Create Direct Payment",
+            "description": {
+              "content": "Create a payment for a local payment method. Supports cards (with optional 3DS and installments), Pix, Boleto, OXXO, SPEI, PSE, Efecty, PagoEfectivo, and many local e-wallets across EBANX markets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "direct"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"payment\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"country\": \"<string>\",\n    \"payment_type_code\": \"<string>\",\n    \"merchant_payment_code\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"amount_total\": \"<float>\",\n    \"instalments\": \"<integer>\",\n    \"creditcard\": {\n      \"card_number\": \"<string>\",\n      \"card_name\": \"<string>\",\n      \"card_due_date\": \"<string>\",\n      \"card_cvv\": \"<string>\",\n      \"token\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88aed5ba-b67b-4f76-8910-98eb09706bb6",
+              "name": "Payment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "direct"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"payment\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"country\": \"<string>\",\n    \"payment_type_code\": \"<string>\",\n    \"merchant_payment_code\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"amount_total\": \"<float>\",\n    \"instalments\": \"<integer>\",\n    \"creditcard\": {\n      \"card_number\": \"<string>\",\n      \"card_name\": \"<string>\",\n      \"card_due_date\": \"<string>\",\n      \"card_cvv\": \"<string>\",\n      \"token\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"payment\": {\n    \"hash\": \"string\",\n    \"merchant_payment_code\": \"string\",\n    \"status\": \"OP\",\n    \"country\": \"string\",\n    \"payment_type_code\": \"string\",\n    \"amount_br\": 9920.158325176366,\n    \"amount_iof\": 2400.2519867419114,\n    \"amount_ext\": 9514.396445433049,\n    \"currency_rate\": 8812.60021527455,\n    \"currency_ext\": \"string\",\n    \"due_date\": \"1977-09-16\",\n    \"instalments\": \"string\",\n    \"transfer_status\": \"string\"\n  },\n  \"status_code\": \"string\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0534029b-ee0c-4f7e-9ccf-43b5d33f84fc",
+          "name": "Capture Payment",
+          "request": {
+            "name": "Capture Payment",
+            "description": {
+              "content": "Capture a previously authorized card payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"amount\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca57e9f9-ad83-460d-9512-8525dabd8985",
+              "name": "Captured",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"amount\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"payment\": {\n    \"hash\": \"string\",\n    \"merchant_payment_code\": \"string\",\n    \"status\": \"OP\",\n    \"country\": \"string\",\n    \"payment_type_code\": \"string\",\n    \"amount_br\": 9920.158325176366,\n    \"amount_iof\": 2400.2519867419114,\n    \"amount_ext\": 9514.396445433049,\n    \"currency_rate\": 8812.60021527455,\n    \"currency_ext\": \"string\",\n    \"due_date\": \"1977-09-16\",\n    \"instalments\": \"string\",\n    \"transfer_status\": \"string\"\n  },\n  \"status_code\": \"string\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da50e909-37ec-4bd5-8aca-20129c1fe592",
+          "name": "Query Payment",
+          "request": {
+            "name": "Query Payment",
+            "description": {
+              "content": "Retrieve the current status and details of a payment by EBANX hash or merchant payment code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"merchant_payment_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41f84001-52fc-4250-bc71-e8c6d90f086c",
+              "name": "Payment details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"merchant_payment_code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"payment\": {\n    \"hash\": \"string\",\n    \"merchant_payment_code\": \"string\",\n    \"status\": \"OP\",\n    \"country\": \"string\",\n    \"payment_type_code\": \"string\",\n    \"amount_br\": 9920.158325176366,\n    \"amount_iof\": 2400.2519867419114,\n    \"amount_ext\": 9514.396445433049,\n    \"currency_rate\": 8812.60021527455,\n    \"currency_ext\": \"string\",\n    \"due_date\": \"1977-09-16\",\n    \"instalments\": \"string\",\n    \"transfer_status\": \"string\"\n  },\n  \"status_code\": \"string\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca86fffb-ceb1-46c2-8c3a-ea8e89536e9f",
+          "name": "Cancel Payment",
+          "request": {
+            "name": "Cancel Payment",
+            "description": {
+              "content": "Cancel an unpaid or pre-authorized payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "963e4759-a869-4bf2-ba40-9c88ee11a3a6",
+              "name": "Cancellation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"payment\": {\n    \"hash\": \"string\",\n    \"merchant_payment_code\": \"string\",\n    \"status\": \"OP\",\n    \"country\": \"string\",\n    \"payment_type_code\": \"string\",\n    \"amount_br\": 9920.158325176366,\n    \"amount_iof\": 2400.2519867419114,\n    \"amount_ext\": 9514.396445433049,\n    \"currency_rate\": 8812.60021527455,\n    \"currency_ext\": \"string\",\n    \"due_date\": \"1977-09-16\",\n    \"instalments\": \"string\",\n    \"transfer_status\": \"string\"\n  },\n  \"status_code\": \"string\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b60f86b6-c60d-4049-83cc-9008f5ec71cc",
+          "name": "Refund Payment",
+          "request": {
+            "name": "Refund Payment",
+            "description": {
+              "content": "Request a full or partial refund for a paid transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"refund_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "71049b0e-9d22-400a-b096-3cb03b317d26",
+              "name": "Refund created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"refund_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"refund\": {\n    \"id\": \"string\",\n    \"merchant_refund_code\": \"string\",\n    \"status\": \"string\",\n    \"amount_ext\": 9660.956933785104,\n    \"description\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14acd0c0-7a7e-4c01-b6dc-b45690121bff",
+          "name": "Refund Or Cancel Payment",
+          "request": {
+            "name": "Refund Or Cancel Payment",
+            "description": {
+              "content": "Cancel the payment if not yet captured, otherwise issue a refund.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "refundOrCancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"refund_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08b8d114-d361-494d-8f3a-45b06e99efca",
+              "name": "Result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "refundOrCancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"refund_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"refund\": {\n    \"id\": \"string\",\n    \"merchant_refund_code\": \"string\",\n    \"status\": \"string\",\n    \"amount_ext\": 9660.956933785104,\n    \"description\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afbfdcff-3b3d-4ffd-a315-99aee86a618a",
+          "name": "List Installments Plan",
+          "request": {
+            "name": "List Installments Plan",
+            "description": {
+              "content": "Retrieve the available installment plans for a given country, amount, and BIN.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "instalmentsPlan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"payment_type_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bc3b38b-f96d-47ac-a1f5-42fc01d80bc4",
+              "name": "Installment plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "instalmentsPlan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"currency_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"payment_type_code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f616de6a-c2e5-473a-b2d1-cfa35a2ffa9a",
+          "name": "Lookup Card BIN",
+          "request": {
+            "name": "Lookup Card BIN",
+            "description": {
+              "content": "Identify the issuer, brand, and country for a card BIN.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "cardbin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"bin\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d1348f9-17c8-4809-9450-90788e781157",
+              "name": "BIN information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "cardbin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"bin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0733058b-6735-43aa-915e-08b88edf63e4",
+          "name": "List Available Banks",
+          "request": {
+            "name": "List Available Banks",
+            "description": {
+              "content": "List banks available for a given country and payment method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "getBankList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"operation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eab27538-6e84-4ab1-b7e6-461441f476b9",
+              "name": "Bank list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "getBankList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"operation\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96c0f977-32d4-4e77-bd5a-e4e4c30eb148",
+          "name": "List Available E-Wallets",
+          "request": {
+            "name": "List Available E-Wallets",
+            "description": {
+              "content": "List e-wallets supported for a given country, currency, and amount.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "ewallet-availableEWallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"amount\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45808b55-9c25-40d7-8c8e-b1f0017628c9",
+              "name": "E-wallet list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "ewallet-availableEWallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"country\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"amount\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66e12f9d-cecf-4788-a4e4-9ae62a031691",
+          "name": "Resend Bank Info",
+          "request": {
+            "name": "Resend Bank Info",
+            "description": {
+              "content": "Resend the bank slip or transfer information to the customer for a Boleto or bank transfer payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ws",
+                "updatecustomerbankinfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4bae0646-a2e4-4eb9-80b0-6b273cc34204",
+              "name": "Result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ws",
+                    "updatecustomerbankinfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integration_key\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2bcbe90-d5c5-460b-94b8-cd0aace14549",
+          "name": "Print Voucher Or Slip",
+          "request": {
+            "name": "Print Voucher Or Slip",
+            "description": {
+              "content": "Return a printable HTML or PDF voucher for cash/voucher payment methods such as Boleto, OXXO, Efecty, and PagoEfectivo.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "print"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hash\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd0a16ac-663e-42ca-a6a9-c699fe598a25",
+              "name": "Printable slip",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-ebanx-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hash\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ebanxpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-ebanx-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f26a92bf-f48e-45f9-837d-d244b2251e7f",
+    "name": "EBANX FX Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.\n\nContact Support:\n Name: EBANX Sales Engineering\n Email: sales.engineering@ebanx.com",
+      "type": "text/plain"
+    }
+  }
+}

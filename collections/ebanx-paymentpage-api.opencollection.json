@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EBANX FX PaymentPage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-ebanx-integration-key",
+      "value": "{{x-ebanx-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PaymentPage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Payment Page Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ebanxpay.com/ws/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a hosted payment page session and return a redirect URL the merchant can send the customer to in order to complete the payment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
