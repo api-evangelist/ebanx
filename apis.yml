@@ -3,6 +3,21 @@ url: https://raw.githubusercontent.com/api-evangelist/ebanx/refs/heads/main/apis
 name: EBANX
 tags:
   - Payments
+  - Pay-In
+  - Payouts
+  - Foreign Exchange
+  - Tokenization
+  - LatAm
+  - Emerging Markets
+  - Pix
+  - Boleto
+  - OXXO
+  - SPEI
+  - PSE
+  - Cross-Border
+  - Webhook
+tags_raw:
+  - Payments
   - Pay-in
   - Payouts
   - Foreign Exchange
@@ -85,6 +100,10 @@ apis:
 - aid: ebanx:ebanx-notifications
   name: EBANX Payment Notifications
   tags:
+  - Webhook
+  - Notification
+  - Event
+  tags_raw:
   - Webhooks
   - Notifications
   - Events
