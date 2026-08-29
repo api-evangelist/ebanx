@@ -40,6 +40,17 @@ description: >-
   EBANX is best known for connecting global merchants to local payment methods like Pix, Pix Automatico, Boleto, OXXO,
   SPEI, PSE, Efecty, PagoEfectivo, Nequi, Mercado Pago, NuPay, PicPay, and dozens of others, plus an expanding
   recurring-payments product on top of alternative payment methods.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
