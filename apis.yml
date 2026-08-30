@@ -3,11 +3,11 @@ url: https://raw.githubusercontent.com/api-evangelist/ebanx/refs/heads/main/apis
 name: EBANX
 tags:
   - Payments
-  - Pay-In
+  - Pay-in
   - Payouts
   - Foreign Exchange
   - Tokenization
-  - LatAm
+  - LATAM
   - Emerging Markets
   - Pix
   - Boleto
