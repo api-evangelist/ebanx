@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EBANX FX PaymentPage API
+  title: EBANX Payment Page API
   version: '1.0'
-  description: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.
+  description: Hosted EBANX checkout. The merchant submits payment parameters and EBANX renders the full payment UI, validates the customer input, processes the payment, and returns the customer to the merchant via a redirect URL.
   contact:
     name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com

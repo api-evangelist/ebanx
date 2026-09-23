@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EBANX FX Payouts API
+  title: EBANX Payout Payouts API
   version: '1.0'
-  description: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.
+  description: Send money from a merchant balance to a local bank account or e-wallet in EBANX's Latin American and emerging markets. Supports both local payouts (merchant pre-funds in local currency) and cross-border payouts (merchant deposits USD and EBANX converts to the payee's local currency), with bank transfers settled in up to two business days and e-wallets in roughly two minutes.
   contact:
     name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com
@@ -308,6 +308,37 @@ paths:
           description: Payee created
 components:
   schemas:
+    PayoutRequest:
+      type: object
+      required:
+      - integration_key
+      - external_uid
+      - payee
+      properties:
+        integration_key:
+          type: string
+        external_uid:
+          type: string
+          description: Merchant-provided unique identifier for the payout.
+        target:
+          type: string
+          enum:
+          - bank_account
+          - e_wallet
+        target_account:
+          type: string
+        currency_target:
+          type: string
+        amount_target:
+          type: number
+          format: float
+        currency_source:
+          type: string
+        amount_source:
+          type: number
+          format: float
+        payee:
+          $ref: '#/components/schemas/Payee'
     PayeeRequest:
       type: object
       required:
@@ -318,6 +349,34 @@ components:
           type: string
         payee:
           $ref: '#/components/schemas/Payee'
+    Payee:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        document:
+          type: string
+        document_type:
+          type: string
+          description: Local tax id type (CPF, CNPJ, RFC, NIT, etc.).
+        country:
+          type: string
+        bank:
+          type: object
+          properties:
+            code:
+              type: string
+            agency:
+              type: string
+            account:
+              type: string
+            account_digit:
+              type: string
+            account_type:
+              type: string
     PayoutResponse:
       type: object
       properties:
@@ -350,65 +409,6 @@ components:
             estimated_settlement:
               type: string
               format: date-time
-    Payee:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        document:
-          type: string
-        document_type:
-          type: string
-          description: Local tax id type (CPF, CNPJ, RFC, NIT, etc.).
-        country:
-          type: string
-        bank:
-          type: object
-          properties:
-            code:
-              type: string
-            agency:
-              type: string
-            account:
-              type: string
-            account_digit:
-              type: string
-            account_type:
-              type: string
-    PayoutRequest:
-      type: object
-      required:
-      - integration_key
-      - external_uid
-      - payee
-      properties:
-        integration_key:
-          type: string
-        external_uid:
-          type: string
-          description: Merchant-provided unique identifier for the payout.
-        target:
-          type: string
-          enum:
-          - bank_account
-          - e_wallet
-        target_account:
-          type: string
-        currency_target:
-          type: string
-        amount_target:
-          type: number
-          format: float
-        currency_source:
-          type: string
-        amount_source:
-          type: number
-          format: float
-        payee:
-          $ref: '#/components/schemas/Payee'
   securitySchemes:
     integrationKey:
       type: apiKey

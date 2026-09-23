@@ -1,12 +1,16 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EBANX FX Payments API
+  title: EBANX Pay-in Direct Payments API
   version: '1.0'
-  description: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS, CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price is honored at capture.
+  description: Direct integration with EBANX to accept payments from customers in Latin America and other rising markets using local payment methods (Pix, Boleto, OXXO, SPEI, PSE, credit and debit cards, e-wallets, vouchers). The Direct API gives merchants full control over the checkout experience and is intended for high-conversion flows, subscriptions, and advanced payment scenarios.
   contact:
     name: EBANX Sales Engineering
     email: sales.engineering@ebanx.com
     url: https://docs.ebanx.com
+  termsOfService: https://www.ebanx.com/en/legal/merchants/terms-and-conditions-for-payment-processing-services/
+  license:
+    name: EBANX Merchant Terms
+    url: https://www.ebanx.com/en/legal/merchants/terms-and-conditions-for-payment-processing-services/
 servers:
 - url: https://api.ebanxpay.com
   description: Production environment
@@ -339,44 +343,6 @@ components:
               type: string
             token:
               type: string
-    RefundRequest:
-      type: object
-      required:
-      - integration_key
-      - operation
-      properties:
-        integration_key:
-          type: string
-        operation:
-          type: string
-          enum:
-          - request
-          - confirm
-          - cancel
-        hash:
-          type: string
-        amount:
-          type: number
-          format: float
-        description:
-          type: string
-        refund_id:
-          type: string
-    DirectPaymentRequest:
-      type: object
-      required:
-      - integration_key
-      - operation
-      - payment
-      properties:
-        integration_key:
-          type: string
-        operation:
-          type: string
-          enum:
-          - request
-        payment:
-          $ref: '#/components/schemas/Payment'
     PaymentResponse:
       type: object
       properties:
@@ -425,6 +391,44 @@ components:
           type: string
         status_message:
           type: string
+    RefundRequest:
+      type: object
+      required:
+      - integration_key
+      - operation
+      properties:
+        integration_key:
+          type: string
+        operation:
+          type: string
+          enum:
+          - request
+          - confirm
+          - cancel
+        hash:
+          type: string
+        amount:
+          type: number
+          format: float
+        description:
+          type: string
+        refund_id:
+          type: string
+    DirectPaymentRequest:
+      type: object
+      required:
+      - integration_key
+      - operation
+      - payment
+      properties:
+        integration_key:
+          type: string
+        operation:
+          type: string
+          enum:
+          - request
+        payment:
+          $ref: '#/components/schemas/Payment'
     RefundResponse:
       type: object
       properties:
@@ -448,3 +452,4 @@ components:
       type: apiKey
       in: header
       name: x-ebanx-integration-key
+      description: EBANX integration key. Historically passed in the JSON body as `integration_key`, also accepted via the `x-ebanx-integration-key` header. Sandbox and production credentials are distinct.

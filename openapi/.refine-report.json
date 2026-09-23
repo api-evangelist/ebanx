@@ -1,22 +1,38 @@
 {
   "provider": "ebanx",
   "sources": [
+    "_original/ebanx-pay-in-direct-api-openapi.yml",
+    "_original/ebanx-payment-page-api-openapi.yml",
+    "_original/ebanx-payout-api-openapi.yml",
     "ebanx-fx-api-openapi.yml",
-    "ebanx-paymentpage-api-openapi.yml",
-    "ebanx-payments-api-openapi.yml",
-    "ebanx-payouts-api-openapi.yml",
     "ebanx-tokenization-api-openapi.yml"
   ],
   "outputs": [
-    "ebanx-fx-api-openapi.yml",
-    "ebanx-paymentpage-api-openapi.yml",
     "ebanx-payments-api-openapi.yml",
+    "ebanx-paymentpage-api-openapi.yml",
     "ebanx-payouts-api-openapi.yml",
+    "ebanx-fx-api-openapi.yml",
     "ebanx-tokenization-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "ebanx-fx-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /ws/exchange post, /ws/fxtoken/get post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "ebanx-tokenization-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /ws/token post, /ws/token/setCVV post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ebanx-pay-in-direct-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ebanx-pay-in-direct-api-openapi.yml: declared missing tag: Payments",
+    "ebanx-payment-page-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ebanx-payment-page-api-openapi.yml: declared missing tag: PaymentPage",
+    "ebanx-payout-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ebanx-payout-api-openapi.yml: declared missing tag: Payouts",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "ebanx-paymentpage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ebanx-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ebanx-payouts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
