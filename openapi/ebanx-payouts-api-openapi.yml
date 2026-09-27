@@ -308,6 +308,16 @@ paths:
           description: Payee created
 components:
   schemas:
+    PayeeRequest:
+      type: object
+      required:
+      - integration_key
+      - payee
+      properties:
+        integration_key:
+          type: string
+        payee:
+          $ref: '#/components/schemas/Payee'
     PayoutRequest:
       type: object
       required:
@@ -337,16 +347,6 @@ components:
         amount_source:
           type: number
           format: float
-        payee:
-          $ref: '#/components/schemas/Payee'
-    PayeeRequest:
-      type: object
-      required:
-      - integration_key
-      - payee
-      properties:
-        integration_key:
-          type: string
         payee:
           $ref: '#/components/schemas/Payee'
     Payee:
