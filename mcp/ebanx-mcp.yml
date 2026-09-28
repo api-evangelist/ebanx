@@ -16,8 +16,11 @@ deployment:
 tools_count: 2
 tools:
 - name: getDocumentList
-  description: ''
+  description: Provides an index of EBANX documentation, where each entry includes a name (used in the
+    'documents' resource template), a brief description, and keywords for easier discovery.
 - name: getDocumentContent
-  description: ''
+  description: Retrieves the full content of an EBANX documentation file by its name
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
