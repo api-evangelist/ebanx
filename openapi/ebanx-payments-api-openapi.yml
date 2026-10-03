@@ -303,6 +303,39 @@ paths:
           description: Printable slip
 components:
   schemas:
+    DirectPaymentRequest:
+      type: object
+      required:
+      - integration_key
+      - operation
+      - payment
+      properties:
+        integration_key:
+          type: string
+        operation:
+          type: string
+          enum:
+          - request
+        payment:
+          $ref: '#/components/schemas/Payment'
+    RefundResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        refund:
+          type: object
+          properties:
+            id:
+              type: string
+            merchant_refund_code:
+              type: string
+            status:
+              type: string
+            amount_ext:
+              type: number
+            description:
+              type: string
     Payment:
       type: object
       properties:
@@ -343,24 +376,6 @@ components:
               type: string
             token:
               type: string
-    RefundResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        refund:
-          type: object
-          properties:
-            id:
-              type: string
-            merchant_refund_code:
-              type: string
-            status:
-              type: string
-            amount_ext:
-              type: number
-            description:
-              type: string
     RefundRequest:
       type: object
       required:
@@ -384,21 +399,6 @@ components:
           type: string
         refund_id:
           type: string
-    DirectPaymentRequest:
-      type: object
-      required:
-      - integration_key
-      - operation
-      - payment
-      properties:
-        integration_key:
-          type: string
-        operation:
-          type: string
-          enum:
-          - request
-        payment:
-          $ref: '#/components/schemas/Payment'
     PaymentResponse:
       type: object
       properties:
