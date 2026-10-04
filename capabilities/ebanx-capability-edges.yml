@@ -1,0 +1,39 @@
+slug: ebanx
+provider: EBANX
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: FX
+  spec_file: ebanx-fx-api-openapi.yml
+  capability_id: BC-210.40
+  capability_id_l1: BC-210
+  capability_name: Foreign Exchange Management
+  confidence: 0.7
+  evidence: Retrieve current foreign exchange rates between local market currencies (BRL, MXN, COP, ARS,
+    CLP, PEN, etc.) and pricing currencies (USD, EUR), and lock a rate via an FX token so a quoted price
+    is honored at capture
+  reason: The operations 'Get Exchange Rate' and 'Get FX Token' deliver FX rate determination and rate
+    locking for cross-border settlement, which is the Foreign Exchange Management capability (exposure/rate
+    locking and settlement). Confidence held at 0.7 because the surface is a rate-quote utility embedded
+    in a payments flow rather than a full treasury FX exposure/hedging system.
+- tag: Payments
+  spec_file: ebanx-payments-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.7
+  evidence: POST /ws/direct createDirectPayment "Create Direct Payment"; POST /ws/capture "Capture Payment";
+    POST /ws/refund "Refund Payment"
+  reason: Operations authorise, capture, cancel and refund customer payments across local payment methods
+    — payment collection and payment-method management. Mapped to the only payment-collection capability
+    available, with some residual doubt because that capability is framed around subscription billing.

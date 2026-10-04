@@ -16,6 +16,7 @@ tags:
 - PSE
 - Cross-Border
 - Webhook
+- Cross-Border Payments
 tags_raw:
 - Payments
 - Pay-in
@@ -31,6 +32,7 @@ tags_raw:
 - PSE
 - Cross-Border
 - Webhooks
+- Cross-Border Payments
 description: EBANX is a Brazil-founded payments processor specializing in pay-in, payout, and cross-border
   payments for Latin America and other emerging markets. The EBANX API ecosystem covers Pay-in (Direct
   API, Payment Page, Payment Link, Drop-in), Payouts (local and cross-border), Foreign Exchange, Card
@@ -341,6 +343,9 @@ maintainers:
   email: sales.engineering@ebanx.com
   url: https://www.ebanx.com
 common:
+- type: CapabilityMap
+  url: capabilities/ebanx-capability-edges.yml
+  name: EBANX Business Capability Map
 - type: Website
   url: https://ebanx.com
 - type: AgenticAccess
