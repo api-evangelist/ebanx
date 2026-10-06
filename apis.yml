@@ -69,7 +69,7 @@ accessModel:
   method: derived
 image: https://www.ebanx.com/static/images/ebanx-symbol-yellow.svg
 created: '2026-05-24'
-modified: '2026-09-16'
+modified: '2026-10-06'
 position: Consuming
 specificationVersion: '0.23'
 humanURL: https://www.ebanx.com
@@ -343,6 +343,8 @@ maintainers:
   email: sales.engineering@ebanx.com
   url: https://www.ebanx.com
 common:
+- url: https://www.ebanx.com/en/insights/
+  type: Blog
 - type: CapabilityMap
   url: capabilities/ebanx-capability-edges.yml
   name: EBANX Business Capability Map
