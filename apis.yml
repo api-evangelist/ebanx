@@ -343,6 +343,12 @@ maintainers:
   email: sales.engineering@ebanx.com
   url: https://www.ebanx.com
 common:
+- type: Plans
+  url: plans/ebanx-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/ebanx-rate-limits.yml
+- type: FinOps
+  url: finops/ebanx-finops.yml
 - url: https://www.ebanx.com/en/insights/
   type: Blog
 - type: CapabilityMap
