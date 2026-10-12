@@ -1,0 +1,32 @@
+edges:
+- partner_name: Open Finance Brasil
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.directory.openbankingbrasil.org.br/participants
+  contract_reference:
+    register: Open Finance Brasil directory (Banco Central do Brasil)
+    spec_file: null
+    role: participant
+    registered_name: Ebanx Instituicao de Pagamento Ltda.
+    register_id: 61d294e0-7dce-5ef3-97db-aebe989df40c
+    matched_domain: ebanx.com
+    api_families:
+    - admin
+    - discovery_outages
+    - discovery_status
+    - enrollments
+    - payments-consents
+    - payments-pix
+    - payments-pix-recurring-payments
+    - payments-pix-recurring-payments-automatic
+    - payments-recurring-consents
+    - payments-recurring-consents-automatic
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
+generated: '2026-10-12'
+method: searched
+checked:
+- https://data.directory.openbankingbrasil.org.br/participants
