@@ -303,79 +303,6 @@ paths:
           description: Printable slip
 components:
   schemas:
-    Payment:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        document:
-          type: string
-          description: Local tax id (CPF, RFC, NIT, etc.).
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code.
-        payment_type_code:
-          type: string
-          description: Payment method code (e.g., visa, mastercard, _all, pix, boleto, oxxo, spei, pse, efecty).
-        merchant_payment_code:
-          type: string
-        currency_code:
-          type: string
-        amount_total:
-          type: number
-          format: float
-        instalments:
-          type: integer
-          minimum: 1
-        creditcard:
-          type: object
-          properties:
-            card_number:
-              type: string
-            card_name:
-              type: string
-            card_due_date:
-              type: string
-            card_cvv:
-              type: string
-            token:
-              type: string
-    RefundResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        refund:
-          type: object
-          properties:
-            id:
-              type: string
-            merchant_refund_code:
-              type: string
-            status:
-              type: string
-            amount_ext:
-              type: number
-            description:
-              type: string
-    DirectPaymentRequest:
-      type: object
-      required:
-      - integration_key
-      - operation
-      - payment
-      properties:
-        integration_key:
-          type: string
-        operation:
-          type: string
-          enum:
-          - request
-        payment:
-          $ref: '#/components/schemas/Payment'
     PaymentResponse:
       type: object
       properties:
@@ -424,6 +351,61 @@ components:
           type: string
         status_message:
           type: string
+    DirectPaymentRequest:
+      type: object
+      required:
+      - integration_key
+      - operation
+      - payment
+      properties:
+        integration_key:
+          type: string
+        operation:
+          type: string
+          enum:
+          - request
+        payment:
+          $ref: '#/components/schemas/Payment'
+    Payment:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        document:
+          type: string
+          description: Local tax id (CPF, RFC, NIT, etc.).
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        payment_type_code:
+          type: string
+          description: Payment method code (e.g., visa, mastercard, _all, pix, boleto, oxxo, spei, pse, efecty).
+        merchant_payment_code:
+          type: string
+        currency_code:
+          type: string
+        amount_total:
+          type: number
+          format: float
+        instalments:
+          type: integer
+          minimum: 1
+        creditcard:
+          type: object
+          properties:
+            card_number:
+              type: string
+            card_name:
+              type: string
+            card_due_date:
+              type: string
+            card_cvv:
+              type: string
+            token:
+              type: string
     RefundRequest:
       type: object
       required:
@@ -447,6 +429,24 @@ components:
           type: string
         refund_id:
           type: string
+    RefundResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        refund:
+          type: object
+          properties:
+            id:
+              type: string
+            merchant_refund_code:
+              type: string
+            status:
+              type: string
+            amount_ext:
+              type: number
+            description:
+              type: string
   securitySchemes:
     integrationKey:
       type: apiKey

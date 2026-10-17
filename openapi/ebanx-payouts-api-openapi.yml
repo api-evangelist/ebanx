@@ -308,75 +308,6 @@ paths:
           description: Payee created
 components:
   schemas:
-    PayoutRequest:
-      type: object
-      required:
-      - integration_key
-      - external_uid
-      - payee
-      properties:
-        integration_key:
-          type: string
-        external_uid:
-          type: string
-          description: Merchant-provided unique identifier for the payout.
-        target:
-          type: string
-          enum:
-          - bank_account
-          - e_wallet
-        target_account:
-          type: string
-        currency_target:
-          type: string
-        amount_target:
-          type: number
-          format: float
-        currency_source:
-          type: string
-        amount_source:
-          type: number
-          format: float
-        payee:
-          $ref: '#/components/schemas/Payee'
-    PayeeRequest:
-      type: object
-      required:
-      - integration_key
-      - payee
-      properties:
-        integration_key:
-          type: string
-        payee:
-          $ref: '#/components/schemas/Payee'
-    Payee:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        document:
-          type: string
-        document_type:
-          type: string
-          description: Local tax id type (CPF, CNPJ, RFC, NIT, etc.).
-        country:
-          type: string
-        bank:
-          type: object
-          properties:
-            code:
-              type: string
-            agency:
-              type: string
-            account:
-              type: string
-            account_digit:
-              type: string
-            account_type:
-              type: string
     PayoutResponse:
       type: object
       properties:
@@ -409,6 +340,75 @@ components:
             estimated_settlement:
               type: string
               format: date-time
+    PayeeRequest:
+      type: object
+      required:
+      - integration_key
+      - payee
+      properties:
+        integration_key:
+          type: string
+        payee:
+          $ref: '#/components/schemas/Payee'
+    PayoutRequest:
+      type: object
+      required:
+      - integration_key
+      - external_uid
+      - payee
+      properties:
+        integration_key:
+          type: string
+        external_uid:
+          type: string
+          description: Merchant-provided unique identifier for the payout.
+        target:
+          type: string
+          enum:
+          - bank_account
+          - e_wallet
+        target_account:
+          type: string
+        currency_target:
+          type: string
+        amount_target:
+          type: number
+          format: float
+        currency_source:
+          type: string
+        amount_source:
+          type: number
+          format: float
+        payee:
+          $ref: '#/components/schemas/Payee'
+    Payee:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        document:
+          type: string
+        document_type:
+          type: string
+          description: Local tax id type (CPF, CNPJ, RFC, NIT, etc.).
+        country:
+          type: string
+        bank:
+          type: object
+          properties:
+            code:
+              type: string
+            agency:
+              type: string
+            account:
+              type: string
+            account_digit:
+              type: string
+            account_type:
+              type: string
   securitySchemes:
     integrationKey:
       type: apiKey
