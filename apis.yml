@@ -98,6 +98,9 @@ apis:
   name: EBANX FX API
   tags:
   - Foreign Exchange
+  - Cross-Border
+  tags_raw:
+  - Foreign Exchange
   - FX
   - Cross-Border
   humanURL: https://docs.ebanx.com/api/
