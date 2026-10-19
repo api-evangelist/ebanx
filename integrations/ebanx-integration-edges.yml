@@ -100,11 +100,42 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-latam-open-finance.py
   first_seen: '2026-10-15'
+- partner_name: MAS Financial Institutions Directory
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://eservices.mas.gov.sg/fid
+  category: open finance (Singapore)
+  contract_reference:
+    register: MAS Financial Institutions Directory
+    spec_file: null
+    standard: MAS licensing (Banking Act / Payment Services Act, Singapore)
+    role: licensed-participant
+    registrations:
+    - registered_name: EBANX PTE. LTD.
+      licences:
+      - Major Payment Institution
+      matched_domain: ebanx.com
+      matched_by: domain
+      evidence: https://eservices.mas.gov.sg/fid/institution/detail/432756-EBANX-PTE-LTD
+      register_id: 432756-EBANX-PTE-LTD
+    signal_note: 'participation only: a regulator licence; no API conformance is published by this register'
+    detected_by: sweep-gulf-asean-open-finance.py
+    detected: '2026-10-18'
+  detected_by: sweep-gulf-asean-open-finance.py
+  first_seen: '2026-10-18'
 generated: '2026-10-12'
 method: searched
 checked:
 - https://data.directory.openbankingbrasil.org.br/participants
+- https://eservices.mas.gov.sg/fid
 - https://www.bcb.gov.br/estabilidadefinanceira/participantespix
+- https://www.bi.go.id/id/layanan/informasi-perizinan/sistem-pembayaran/default.aspx
+- https://www.bnm.gov.my/list-of-regulatees
+- https://www.ojk.go.id/id/kanal/iknb/data-dan-statistik/direktori/fintech/Default.aspx
 source:
 - https://data.directory.openbankingbrasil.org.br/participants
 - https://www.bcb.gov.br/estabilidadefinanceira/participantespix
