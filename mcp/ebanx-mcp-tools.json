@@ -1,0 +1,32 @@
+{
+  "endpoint": "https://mcp.ebanx.com/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-03-26",
+  "server_info": {
+    "version": "1.0.0-SNAPSHOT",
+    "name": "ebanx-mcp"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "getDocumentList",
+        "description": "Provides an index of EBANX documentation, where each entry includes a name (used in the 'documents' resource template), a brief description, and keywords for easier discovery.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "getDocumentContent",
+        "description": "Retrieves the full content of an EBANX documentation file by its name",
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ]
+  }
+}
