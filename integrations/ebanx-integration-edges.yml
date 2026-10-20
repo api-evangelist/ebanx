@@ -26,6 +26,33 @@ edges:
     - payments-recurring-consents-automatic
     detected_by: sweep-standard-registers.py
     detected: '2026-10-14'
+- partner_name: MAS Financial Institutions Directory
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://eservices.mas.gov.sg/fid
+  category: open finance (Singapore)
+  contract_reference:
+    register: MAS Financial Institutions Directory
+    spec_file: null
+    standard: MAS licensing (Banking Act / Payment Services Act, Singapore)
+    role: licensed-participant
+    registrations:
+    - registered_name: EBANX PTE. LTD.
+      licences:
+      - Major Payment Institution
+      matched_domain: ebanx.com
+      matched_by: domain
+      evidence: https://eservices.mas.gov.sg/fid/institution/detail/432756-EBANX-PTE-LTD
+      register_id: 432756-EBANX-PTE-LTD
+    signal_note: 'participation only: a regulator licence; no API conformance is published by this register'
+    detected_by: sweep-gulf-asean-open-finance.py
+    detected: '2026-10-18'
+  detected_by: sweep-gulf-asean-open-finance.py
+  first_seen: '2026-10-18'
 - partner_name: Open Finance Brasil functional certification
   partner: null
   partner_match: register
@@ -79,7 +106,7 @@ edges:
   evidence: https://www.bcb.gov.br/estabilidadefinanceira/participantespix
   category: instant payments (Brazil)
   contract_reference:
-    register: Pix participants (Banco Central do Brasil, https://www.bcb.gov.br/content/estabilidadefinanceira/participantes_pix/lista-participantes-instituicoes-em-adesao-pix-20261015.csv)
+    register: Pix participants (Banco Central do Brasil, https://www.bcb.gov.br/content/estabilidadefinanceira/participantes_pix/lista-participantes-instituicoes-em-adesao-pix-20261020.csv)
     spec_file: null
     standard: Pix
     role: pix-participant
@@ -97,36 +124,9 @@ edges:
       identity: Open Finance Brasil directory, same CNPJ 21018182000106 ('Ebanx Instituicao de Pagamento Ltda.')
     signal_note: 'participation only: the domain comes from a labelled lookup (registrations[].identity)'
     detected_by: sweep-latam-open-finance.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-latam-open-finance.py
   first_seen: '2026-10-15'
-- partner_name: MAS Financial Institutions Directory
-  partner: null
-  partner_match: register
-  type: register
-  channel: regulator-register
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://eservices.mas.gov.sg/fid
-  category: open finance (Singapore)
-  contract_reference:
-    register: MAS Financial Institutions Directory
-    spec_file: null
-    standard: MAS licensing (Banking Act / Payment Services Act, Singapore)
-    role: licensed-participant
-    registrations:
-    - registered_name: EBANX PTE. LTD.
-      licences:
-      - Major Payment Institution
-      matched_domain: ebanx.com
-      matched_by: domain
-      evidence: https://eservices.mas.gov.sg/fid/institution/detail/432756-EBANX-PTE-LTD
-      register_id: 432756-EBANX-PTE-LTD
-    signal_note: 'participation only: a regulator licence; no API conformance is published by this register'
-    detected_by: sweep-gulf-asean-open-finance.py
-    detected: '2026-10-18'
-  detected_by: sweep-gulf-asean-open-finance.py
-  first_seen: '2026-10-18'
 generated: '2026-10-12'
 method: searched
 checked:
